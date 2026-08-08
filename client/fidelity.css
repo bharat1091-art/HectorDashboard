@@ -1,20 +1,20 @@
 /* Figma fidelity layout */
-.dashboard-shell { width: min(1537px, 100%); padding: 12px 0; display: grid; grid-template-columns: minmax(0, 2.25fr) minmax(300px, 1fr); gap: 3px; align-items: start; }
-.dashboard-panel { width: auto; height: min(941px, calc(100svh - 24px)); min-height: 0; border-radius: 24px; grid-template-rows: 167px 1fr 134px; }
-.weather-header { min-height: 167px; padding: 0 72px; grid-template-columns: 1fr 1fr; align-items: end; border-bottom: 0; }
+.dashboard-shell { position: relative; width: 1506px; height: 941px; margin: 0 auto; padding: 0; display: block; overflow: visible; }
+.dashboard-panel { position: relative; width: 1202px; height: 941px; min-height: 0; border: 0; border-radius: 0; background: transparent; box-shadow: none; backdrop-filter: none; overflow: visible; grid-template-rows: 167px 632px 134px; align-content: start; } .dashboard-panel::before { content: ""; position: absolute; z-index: 0; left: 72px; top: 12px; width: 1062px; height: 941px; border: 1px solid rgba(0,175,255,.38); border-radius: 24px; background: linear-gradient(145deg, rgba(4,16,37,.82), rgba(4,10,24,.68)); box-shadow: inset 0 0 50px rgba(0,175,255,.07), 0 24px 90px rgba(0,0,0,.35), 0 0 35px rgba(0,175,255,.1); backdrop-filter: blur(20px); } .dashboard-panel > * { position: relative; z-index: 1; }
+.weather-header { position: relative; width: 1062px; height: 167px; min-height: 167px; margin-left: 72px; padding: 0; display: block; border-bottom: 0; }
 .weather-header::after { left: 44%; right: 0; bottom: 0; height: 1px; box-shadow: 0 0 9px var(--cyan); }
-.weather-summary { align-self: end; justify-self: start; margin-bottom: 34px; }
+.weather-summary { position: absolute; left: 0; top: 0; width: 425px; height: 167px; margin: 0; display: block; } .weather-summary > div:nth-child(2) { position: absolute; left: 152px; top: 66px; } .weather-symbol { position: absolute; left: 0; top: 0; width: 155px; height: 152px; }
 .weather-condition { font-size: 48px; }
 .live-status { margin-top: 7px; font-size: 20px; letter-spacing: 2px; }
 .mode-hint { font-size: 10px; }
-.location-summary { align-self: end; justify-self: end; margin-bottom: 31px; }
+.location-summary { position: absolute; left: 719px; top: 66px; width: 292px; margin: 0; display: flex; align-items: flex-start; } .location-summary .location-icon { width: 57px; height: 57px; flex: 0 0 57px; margin-top: 13px; }
 .city-name { font-size: 48px; }
 .region-name { font-size: 20px; margin-top: 4px; }
-.header-network { right: 20px; bottom: 18px; }
+.header-network { left: 80px; right: auto; bottom: 18px; }
 .dashboard-content { display: contents; }
-.dashboard-main { min-width: 0; display: grid; grid-template-rows: 1fr auto auto auto; align-content: stretch; gap: 0; padding: 0; }
+.dashboard-main { position: relative; min-width: 0; width: 1202px; height: 632px; display: block; padding: 0; }
 .location-pulse { display: none; }
-.distance-section { width: 86.5%; min-height: 342px; margin: 17px auto 0; grid-template-columns: 2fr 1px .9fr; align-self: center; gap: clamp(22px, 4vw, 55px); }
+.distance-section { position: absolute; left: 182px; top: 17px; width: 923px; height: 342px; min-height: 342px; margin: 0; grid-template-columns: 611px 1px 277px; gap: 0; }
 .distance-value { font-size: clamp(190px, 19vw, 285px); }
 .distance-unit { font-size: 100px; right: 0; bottom: 13px; }
 .metric-separator { height: 168px; }
@@ -22,7 +22,7 @@
 .speed-value { font-size: 120px; }
 .speed-unit { font-size: 50px; }
 .speed-live { display: none; }
-.route-tracker { min-height: 194px; height: 194px; padding: 0; border: 0; overflow: hidden; }
+.route-tracker { position: absolute; left: 0; top: 292px; width: 1202px; min-height: 194px; height: 194px; padding: 0; border: 0; overflow: hidden; }
 .route-visual { height: 194px; margin: 0; overflow: hidden; }
 .route-art { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: fill; opacity: .95; }
 .route-completed { position: absolute; left: 8%; top: 51%; height: 7px; background: #00afff; box-shadow: 0 0 9px #00afff, 0 0 24px #00afff; mix-blend-mode: screen; opacity: .7; }
@@ -31,12 +31,12 @@
 .route-vehicle-motion .vehicle-platform { position: absolute; left: 14px; top: 34px; width: 75px; height: 16px; background: rgba(0,175,255,.72); border-radius: 50%; filter: blur(7px); }
 .route-progress-value { position: absolute; right: 5%; top: 15px; color: #00afff; font: 700 18px Rajdhani, sans-serif; letter-spacing: 1px; }
 .route-distance { right: 5%; bottom: 18px; font-size: 10px; letter-spacing: 2px; }
-.trip-time { width: 482px; max-width: 88%; min-height: 83px; margin: 0 auto; gap: 13px; padding: 0; }
+.trip-time { position: absolute; left: 362px; top: 508px; width: 482px; max-width: none; min-height: 83px; height: 83px; margin: 0; gap: 13px; padding: 0; }
 .trip-time-label { font-size: 50px; }
 .trip-time strong { font-size: 65px; }
 .trip-time-unit { font-size: 50px; }
 .telemetry-strip { display: none; }
-.dashboard-sidebar { height: min(941px, calc(100svh - 24px)); padding: 0 22px; grid-template-rows: 198px 294px 198px 207px; gap: 15px; }
+.dashboard-sidebar { position: absolute; z-index: 2; left: 1065px; top: 0; width: 472px; height: 942px; padding: 0 22px; grid-template-rows: 198px 294px 198px 198px; gap: 15px; }
 .dashboard-card { border-radius: 15px; background: rgba(217,217,217,.36); border: 0; backdrop-filter: none; }
 .temp-layout { gap: 22px; padding: 20px 0 0; }
 .temp-value { font-size: 120px; }
@@ -49,9 +49,9 @@
 .cabin-card img { width: 282px; height: 188px; object-fit: contain; object-position: left center; opacity: 1; }
 .cabin-overlay { background: linear-gradient(90deg, transparent 0 51%, rgba(217,217,217,.36) 80%); }
 .cabin-temp { font-size: 120px; white-space: nowrap; }
-.bottom-navigation { min-height: 134px; height: 134px; margin: 0; padding: 0 28px; grid-template-columns: 128px 1fr 50px 1px 318px; gap: 14px; border-top: 0; }
-.bottom-navigation::before { width: 160px; left: 28%; }
-.trip-arrow { height: 100px; }
+.bottom-navigation { width: 996px; min-height: 94px; height: 94px; margin: 0 auto; padding: 0; grid-template-columns: 80px 1fr 80px 1px 300px; gap: 14px; border-top: 0; align-self: center; }
+.bottom-navigation::before { width: 160px; left: 30%; }
+.trip-arrow { height: 94px; }
 .trip-selector { font-size: 67px; justify-content: center; }
 .trip-dots { display: none; }
 .navigation-divider { height: 85px; }
@@ -74,9 +74,16 @@
 }
 
 @media (max-width: 900px) {
-  .dashboard-shell { width: 100%; padding: 0; display: block; }
+  .dashboard-shell { width: 100%; height: auto; padding: 0; display: block; }
   .dashboard-panel { height: auto; min-height: 100svh; border-radius: 0; grid-template-rows: auto auto auto; }
-  .weather-header { min-height: 170px; padding: 34px 20px 18px; grid-template-columns: 1fr; align-items: center; gap: 17px; }
+  .dashboard-sidebar { position: relative; left: auto; top: auto; width: auto; height: auto; }
+  .dashboard-panel::before { left: 0; top: 0; width: 100%; height: 100%; border-radius: 0; }
+  .weather-header { position: relative; width: auto; height: 170px; min-height: 170px; margin-left: 0; padding: 34px 20px 18px; display: grid; grid-template-columns: 1fr; align-items: center; gap: 17px; }
+  .weather-summary { position: relative; left: auto; top: auto; width: auto; height: auto; display: flex; }
+  .weather-summary > div:nth-child(2) { position: static; }
+  .weather-symbol { position: relative; left: auto; top: auto; width: 58px; height: 55px; }
+  .location-summary { position: relative; left: auto; top: auto; width: auto; display: flex; }
+  .location-summary .location-icon { width: 25px; height: 25px; flex-basis: 25px; margin-top: 0; }
   .weather-summary, .location-summary { margin: 0; align-self: auto; }
   .weather-condition, .city-name { font-size: 34px; }
   .live-status { font-size: 14px; }
