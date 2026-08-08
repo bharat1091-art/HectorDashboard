@@ -31,4 +31,11 @@ const App = () => (
   </QueryClientProvider>
 );
 
-createRoot(document.getElementById("root")!).render(<App />);
+type AppWindow = Window & {
+  __velocityRoot?: ReturnType<typeof createRoot>;
+};
+
+const appWindow = window as AppWindow;
+const root = appWindow.__velocityRoot ?? createRoot(document.getElementById("root")!);
+appWindow.__velocityRoot = root;
+root.render(<App />);
