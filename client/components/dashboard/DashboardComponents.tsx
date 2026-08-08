@@ -46,7 +46,7 @@ export function DistanceSection({ trip, vehicle, unit }: { trip: TripRecord; veh
 
 export function RouteTracker({ progress }: { progress: number }) {
   const boundedProgress = Math.max(0, Math.min(100, progress));
-  return <section className="route-tracker"><div className="route-visual"><img className="route-art" src={ROUTE_IMAGE} alt="Route progress with vehicle and flags" /><div className="route-completed" style={{ width: `${boundedProgress}%` }} /><div className="route-vehicle-motion" style={{ left: `${Math.max(9, Math.min(91, boundedProgress))}%` }}><img src={VEHICLE_IMAGE} alt="Vehicle" /><span className="vehicle-platform" /></div><div className="route-progress-value">{Math.round(boundedProgress)}%</div><div className="route-distance"><Navigation size={15} /> GPS</div></div></section>;
+  return <section className="route-tracker"><div className="route-visual"><img className="route-art" src={ROUTE_IMAGE} alt="Route progress with vehicle and flags" /><div className="route-completed" style={{ width: `${boundedProgress}%` }} /><div className="route-progress-value">{Math.round(boundedProgress)}%</div><div className="route-distance"><Navigation size={15} /> GPS</div></div></section>;
 }
 
 export function TripTimeSection({ duration }: { duration: string }) {

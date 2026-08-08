@@ -26,9 +26,6 @@
 .route-visual { height: 194px; margin: 0; overflow: hidden; }
 .route-art { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: fill; opacity: .95; }
 .route-completed { position: absolute; left: 8%; top: 51%; height: 7px; background: #00afff; box-shadow: 0 0 9px #00afff, 0 0 24px #00afff; mix-blend-mode: screen; opacity: .7; }
-.route-vehicle-motion { position: absolute; top: 36%; width: 100px; height: 48px; transform: translateX(-50%); transition: left 1.2s cubic-bezier(.22,.61,.36,1); pointer-events: none; }
-.route-vehicle-motion img { position: absolute; left: 0; top: 0; width: 100px; height: auto; object-fit: contain; filter: drop-shadow(0 0 6px rgba(0,175,255,.85)); }
-.route-vehicle-motion .vehicle-platform { position: absolute; left: 14px; top: 34px; width: 75px; height: 16px; background: rgba(0,175,255,.72); border-radius: 50%; filter: blur(7px); }
 .route-progress-value { position: absolute; right: 5%; top: 15px; color: #00afff; font: 700 18px Rajdhani, sans-serif; letter-spacing: 1px; }
 .route-distance { right: 5%; bottom: 18px; font-size: 10px; letter-spacing: 2px; }
 .trip-time { position: absolute; left: 362px; top: 508px; width: 482px; max-width: none; min-height: 83px; height: 83px; margin: 0; gap: 13px; padding: 0; }
@@ -97,9 +94,6 @@
   .speed-value { font-size: clamp(68px, 19vw, 100px); }
   .speed-unit { font-size: 23px; }
   .route-tracker, .route-visual { height: 148px; min-height: 148px; }
-  .route-vehicle-motion { top: 34%; width: 74px; }
-  .route-vehicle-motion img { width: 74px; }
-  .route-vehicle-motion .vehicle-platform { top: 27px; width: 56px; }
   .trip-time { width: 100%; max-width: none; min-height: 55px; }
   .trip-time-label { font-size: 20px; }
   .trip-time strong { font-size: 48px; }
