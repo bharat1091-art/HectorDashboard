@@ -1,62 +1,52 @@
-import { DemoResponse } from "@shared/api";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { Activity, CloudRain, LocateFixed } from "lucide-react";
+import { useLocationStore, useNetworkStore, useSettingsStore, useTripStore, useVehicleStore, useWeatherStore, startVehicleTelemetry } from "@/stores/dashboardStores";
+import { WeatherEnvironment } from "@/components/dashboard/WeatherEnvironment";
+import { BottomNavigation, DashboardSidebar, DistanceSection, RouteTracker, TelemetryStrip, TripTimeSection, WeatherHeader } from "@/components/dashboard/DashboardComponents";
 
 export default function Index() {
-  const [exampleFromServer, setExampleFromServer] = useState("");
-  // Fetch users on component mount
-  useEffect(() => {
-    fetchDemo();
-  }, []);
+  const { weather, refreshWeather } = useWeatherStore();
+  const { location, refreshLocation } = useLocationStore();
+  const { vehicle, connection } = useVehicleStore();
+  const { trips, selectedIndex, previousTrip, nextTrip } = useTripStore();
+  const { distanceUnit, temperatureUnit, apiKey } = useSettingsStore();
+  const { network, refreshNetwork } = useNetworkStore();
+  const trip = trips[selectedIndex];
 
-  // Example of how to fetch data from the server (if needed)
-  const fetchDemo = async () => {
-    try {
-      const response = await fetch("/api/demo");
-      const data = (await response.json()) as DemoResponse;
-      setExampleFromServer(data.message);
-    } catch (error) {
-      console.error("Error fetching hello:", error);
-    }
-  };
+  useEffect(() => {
+    refreshLocation();
+    refreshNetwork();
+    const unsubscribe = startVehicleTelemetry();
+    return unsubscribe;
+  }, [refreshLocation, refreshNetwork]);
+
+  useEffect(() => {
+    refreshWeather(location, apiKey);
+  }, [location, apiKey, refreshWeather]);
+
+  const temperature = temperatureUnit === "F" ? Math.round(weather.temperatureC * 1.8 + 32) : weather.temperatureC;
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-100 to-slate-200">
-      <div className="text-center">
-        {/* TODO: FUSION_GENERATION_APP_PLACEHOLDER replace everything here with the actual app! */}
-        <h1 className="text-2xl font-semibold text-slate-800 flex items-center justify-center gap-3">
-          <svg
-            className="animate-spin h-8 w-8 text-slate-400"
-            viewBox="0 0 50 50"
-          >
-            <circle
-              className="opacity-30"
-              cx="25"
-              cy="25"
-              r="20"
-              stroke="currentColor"
-              strokeWidth="5"
-              fill="none"
-            />
-            <circle
-              className="text-slate-600"
-              cx="25"
-              cy="25"
-              r="20"
-              stroke="currentColor"
-              strokeWidth="5"
-              fill="none"
-              strokeDasharray="100"
-              strokeDashoffset="75"
-            />
-          </svg>
-          Generating your app...
-        </h1>
-        <p className="mt-4 text-slate-600 max-w-md">
-          Watch the chat on the left for updates that might need your attention
-          to finish generating
-        </p>
-        <p className="mt-4 hidden max-w-md">{exampleFromServer}</p>
+    <main className={`dashboard-page theme-${weather.condition}`}>
+      <WeatherEnvironment condition={weather.condition} />
+      <div className="dashboard-shell">
+        <div className="dashboard-panel">
+          <WeatherHeader weather={weather} city={location.city} state={location.state} country={location.country} online={network.online} signalBars={network.signalBars} />
+          <div className="dashboard-content">
+            <section className="dashboard-main">
+              <div className="location-pulse"><LocateFixed size={14} /> <span>GPS POSITION LOCKED</span></div>
+              <DistanceSection trip={trip} vehicle={vehicle} unit={distanceUnit} />
+              <RouteTracker progress={trip.progressPercent} />
+              <TripTimeSection duration={trip.durationLabel} />
+              <TelemetryStrip vehicle={vehicle} connection={connection} />
+            </section>
+            <DashboardSidebar weather={{ ...weather, temperatureC: temperature }} vehicle={vehicle} temperatureUnit={temperatureUnit} />
+          </div>
+          <BottomNavigation trip={trip} onPrevious={previousTrip} onNext={nextTrip} />
+        </div>
       </div>
-    </div>
+      <div className="dashboard-status"><Activity size={14} /> LIVE VEHICLE TELEMETRY <span /> UPDATED JUST NOW</div>
+      <div className="mobile-weather-chip"><CloudRain size={14} /> {weather.label}</div>
+    </main>
   );
 }
