@@ -158,7 +158,7 @@ interface SettingsStore {
 }
 
 export const useSettingsStore = create<SettingsStore>((set) => ({
-  apiKey: "",
+  apiKey: import.meta.env.VITE_OPENWEATHER_API_KEY ?? "",
   refreshInterval: 10,
   distanceUnit: "km",
   temperatureUnit: "C",

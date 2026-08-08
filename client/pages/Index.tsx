@@ -32,18 +32,16 @@ export default function Index() {
       <div className="dashboard-shell">
         <div className="dashboard-panel">
           <WeatherHeader weather={weather} city={location.city} state={location.state} country={location.country} online={network.online} signalBars={network.signalBars} />
-          <div className="dashboard-content">
-            <section className="dashboard-main">
-              <div className="location-pulse"><LocateFixed size={14} /> <span>GPS POSITION LOCKED</span></div>
-              <DistanceSection trip={trip} vehicle={vehicle} unit={distanceUnit} />
-              <RouteTracker progress={trip.progressPercent} />
-              <TripTimeSection duration={trip.durationLabel} />
-              <TelemetryStrip vehicle={vehicle} connection={connection} />
-            </section>
-            <DashboardSidebar weather={{ ...weather, temperatureC: temperature }} vehicle={vehicle} temperatureUnit={temperatureUnit} />
-          </div>
+          <section className="dashboard-main">
+            <div className="location-pulse"><LocateFixed size={14} /> <span>GPS POSITION LOCKED</span></div>
+            <DistanceSection trip={trip} vehicle={vehicle} unit={distanceUnit} />
+            <RouteTracker progress={trip.progressPercent} />
+            <TripTimeSection duration={trip.durationLabel} />
+            <TelemetryStrip vehicle={vehicle} connection={connection} />
+          </section>
           <BottomNavigation trip={trip} onPrevious={previousTrip} onNext={nextTrip} />
         </div>
+        <DashboardSidebar weather={{ ...weather, temperatureC: temperature }} vehicle={vehicle} temperatureUnit={temperatureUnit} />
       </div>
       <div className="dashboard-status"><Activity size={14} /> LIVE VEHICLE TELEMETRY <span /> UPDATED JUST NOW</div>
       <div className="mobile-weather-chip"><CloudRain size={14} /> {weather.label}</div>

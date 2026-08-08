@@ -1,5 +1,6 @@
 import "./global.css";
 import "./dashboard.css";
+import "./fidelity.css";
 
 import { Toaster } from "@/components/ui/toaster";
 import { createRoot } from "react-dom/client";
