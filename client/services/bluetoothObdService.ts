@@ -10,9 +10,9 @@ export function createMockTelemetryTicker(
   onTick: (data: VehicleData) => void,
   intervalMs = 2000,
 ) {
-  let speed = 110;
+  let speed = 50;
   let cabinTemp = 27;
-  let distance = 235.6;
+  let distance = 236.1;
 
   const timer = setInterval(() => {
     speed = clamp(speed + (Math.random() - 0.5) * 12, 0, 180);
