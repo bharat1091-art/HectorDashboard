@@ -1,4 +1,4 @@
-import { CloudLightning, CloudSnow, CloudSun, Droplets, Moon, Snowflake, Sun, Wind } from "lucide-react";
+import { CloudLightning, Droplets, Moon, Snowflake, Sun, Wind } from "lucide-react";
 import { WeatherCondition } from "@/types/dashboard";
 
 interface WeatherEnvironmentProps {
@@ -10,8 +10,6 @@ export function WeatherEnvironment({ condition }: WeatherEnvironmentProps) {
   const isSnow = condition === "snow";
   const isNight = condition === "clear-night";
   const isFog = condition === "fog" || condition === "mist";
-  const isClear = condition === "clear-day";
-
   return (
     <div className={`weather-environment weather-${condition}`} aria-hidden="true">
       <div className="environment-glow" />
@@ -26,14 +24,6 @@ export function WeatherEnvironment({ condition }: WeatherEnvironmentProps) {
       )}
       {isFog && <div className="fog-layer"><span /><span /><span /></div>}
       <div className="weather-horizon" />
-      <div className="environment-icon">
-        {isStorm && <CloudLightning />}
-        {isSnow && <CloudSnow />}
-        {isNight && <Moon />}
-        {isClear && <Sun />}
-        {condition === "clouds" && <CloudSun />}
-        {isFog && <Wind />}
-      </div>
     </div>
   );
 }

@@ -12,7 +12,7 @@ export function createMockTelemetryTicker(
 ) {
   let speed = 92;
   let cabinTemp = 27;
-  let distance = 231.8;
+  let distance = 235.6;
 
   const timer = setInterval(() => {
     speed = clamp(speed + (Math.random() - 0.5) * 12, 0, 180);
