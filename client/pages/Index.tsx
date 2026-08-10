@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Activity, CloudRain, LocateFixed } from "lucide-react";
+import { Activity, LocateFixed } from "lucide-react";
 import { useLocationStore, useNetworkStore, useSettingsStore, useTripStore, useVehicleStore, useWeatherStore, startVehicleTelemetry } from "@/stores/dashboardStores";
 import { WeatherEnvironment } from "@/components/dashboard/WeatherEnvironment";
 import { BottomNavigation, DashboardSidebar, DistanceSection, RouteTracker, TelemetryStrip, TripTimeSection, WeatherHeader } from "@/components/dashboard/DashboardComponents";
@@ -31,11 +31,11 @@ export default function Index() {
       <WeatherEnvironment condition={weather.condition} />
       <div className="dashboard-shell">
         <div className="dashboard-panel">
-          <WeatherHeader weather={weather} city={location.city} state={location.state} country={location.country} online={network.online} signalBars={network.signalBars} />
+          <WeatherHeader weather={weather} city={location.city} state={location.state} country={location.country} online={network.online} />
           <section className="dashboard-main">
             <div className="location-pulse"><LocateFixed size={14} /> <span>GPS POSITION LOCKED</span></div>
             <DistanceSection trip={trip} vehicle={vehicle} unit={distanceUnit} />
-            <RouteTracker progress={trip.progressPercent} />
+            <RouteTracker />
             <TripTimeSection duration={trip.durationLabel} />
             <TelemetryStrip vehicle={vehicle} connection={connection} />
           </section>
@@ -44,7 +44,7 @@ export default function Index() {
         <DashboardSidebar weather={{ ...weather, temperatureC: temperature }} vehicle={vehicle} temperatureUnit={temperatureUnit} />
       </div>
       <div className="dashboard-status"><Activity size={14} /> LIVE VEHICLE TELEMETRY <span /> UPDATED JUST NOW</div>
-      <div className="mobile-weather-chip"><CloudRain size={14} /> {weather.label}</div>
+      <div className="mobile-weather-chip">{weather.label}</div>
     </main>
   );
 }

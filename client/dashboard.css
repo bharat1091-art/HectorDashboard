@@ -27,9 +27,6 @@ button { cursor: pointer; }
 .environment-icon svg { width: clamp(100px, 15vw, 260px); height: auto; stroke-width: 1; }
 .weather-clear-day .environment-icon { color: rgba(255, 239, 164, .72); filter: drop-shadow(0 0 30px #ffe99a); animation: sun-pulse 5s ease-in-out infinite; }
 .weather-clear-night .environment-icon { color: rgba(224, 242, 255, .8); filter: drop-shadow(0 0 32px #9edbff); }
-.rain-layer { position: absolute; inset: -200px 0 0; opacity: .34; background-image: repeating-linear-gradient(112deg, transparent 0 22px, rgba(179, 233, 255, .78) 23px 24px, transparent 25px 53px); animation: rain-fall .75s linear infinite; }
-.rain-layer span { position: absolute; display: block; width: 1px; height: 30px; background: #aee9ff; box-shadow: 0 0 7px #00afff; }
-.rain-layer span:nth-child(1) { left: 12%; top: 25%; }.rain-layer span:nth-child(2) { left: 29%; top: 42%; }.rain-layer span:nth-child(3) { left: 46%; top: 16%; }.rain-layer span:nth-child(4) { left: 63%; top: 36%; }.rain-layer span:nth-child(5) { left: 79%; top: 21%; }.rain-layer span:nth-child(6) { left: 91%; top: 55%; }.rain-layer span:nth-child(7) { left: 23%; top: 70%; }.rain-layer span:nth-child(8) { left: 55%; top: 79%; }
 .lightning-layer { position: absolute; inset: 0; background: rgba(179, 230, 255, .8); opacity: 0; animation: lightning-flash 7s ease-in-out infinite; mix-blend-mode: screen; }
 .lightning-layer::after { content: ""; position: absolute; right: 18%; top: 8%; width: 5px; height: 45%; background: #b7f0ff; clip-path: polygon(48% 0, 100% 0, 64% 44%, 94% 43%, 16% 100%, 42% 54%, 6% 55%); filter: drop-shadow(0 0 13px #b8edff); }
 .snow-layer { position: absolute; inset: 0; color: rgba(226, 248, 255, .85); }

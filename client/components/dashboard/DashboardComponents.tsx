@@ -7,12 +7,10 @@ import {
   Clock3,
   Gauge,
   MapPin,
-  Navigation,
   Radio,
   Settings,
   Thermometer,
   Timer,
-  Wifi,
   Zap,
 } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -26,7 +24,7 @@ function GlassCard({ children, className = "" }: { children: React.ReactNode; cl
   return <div className={`glass-card dashboard-card ${className}`}>{children}</div>;
 }
 
-export function WeatherHeader({ weather, city, state, country, online, signalBars }: { weather: WeatherData; city: string; state: string; country: string; online: boolean; signalBars: number }) {
+export function WeatherHeader({ weather, city, state, country, online }: { weather: WeatherData; city: string; state: string; country: string; online: boolean }) {
   return (
     <header className="weather-header">
       <div className="weather-summary">
@@ -34,7 +32,6 @@ export function WeatherHeader({ weather, city, state, country, online, signalBar
         <div><div className="weather-condition">{weather.label}</div><div className="live-status"><span className={online ? "signal-live" : "signal-offline"}><Radio size={15} strokeWidth={3} /></span>{online ? "Live" : "Offline"}<WeatherModeHint condition={weather.condition} /></div></div>
       </div>
       <div className="location-summary"><MapPin size={38} className="location-icon" /><div><div className="city-name">{city}</div><div className="region-name">{state}, {country}</div></div></div>
-      <div className="header-network"><Wifi size={16} /><span>{"▮".repeat(signalBars)}<span className="signal-empty">{"▮".repeat(4 - signalBars)}</span></span></div>
     </header>
   );
 }
@@ -44,9 +41,8 @@ export function DistanceSection({ trip, vehicle, unit }: { trip: TripRecord; veh
   return <section className="distance-section"><div className="distance-metric"><div className="distance-value">{value}</div><div className="distance-unit">{unit}</div></div><div className="metric-separator" /><div className="speed-metric"><div className="metric-label">Avg</div><div className="speed-value">{trip.avgSpeedKph}</div><div className="speed-unit">km/h</div></div></section>;
 }
 
-export function RouteTracker({ progress }: { progress: number }) {
-  const boundedProgress = Math.max(0, Math.min(100, progress));
-  return <section className="route-tracker"><div className="route-visual"><img className="route-art" src={ROUTE_IMAGE} alt="Route progress with vehicle and flags" /><div className="route-completed" style={{ width: `${boundedProgress}%` }} /><div className="route-progress-value">{Math.round(boundedProgress)}%</div><div className="route-distance"><Navigation size={15} /> GPS</div></div></section>;
+export function RouteTracker() {
+  return <section className="route-tracker"><div className="route-visual"><img className="route-art" src={ROUTE_IMAGE} alt="Route progress with vehicle and flags" /></div></section>;
 }
 
 export function TripTimeSection({ duration }: { duration: string }) {
