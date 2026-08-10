@@ -90,6 +90,7 @@
 .vehicle-status-strip { position: absolute; left: 575px; top: 523px; width: 460px; display: flex; align-items: center; justify-content: flex-end; gap: 16px; color: rgba(178,226,247,.8); font-size: 40px; letter-spacing: 1px; white-space: nowrap; }
 .vehicle-status-strip span { display: inline-flex; align-items: center; gap: 5px; }
 .vehicle-status-strip svg { color: var(--cyan); filter: drop-shadow(0 0 5px var(--cyan)); }
+.vehicle-status-strip .lucide-zap { font-size: 10000px; }
 .signal-bars { display: inline-block; width: 24px; height: 16px; background: linear-gradient(to top, var(--cyan) 0 100%) 0 100% / 4px 25% no-repeat, linear-gradient(to top, var(--cyan) 0 100%) 6px 100% / 4px 50% no-repeat, linear-gradient(to top, var(--cyan) 0 100%) 12px 100% / 4px 75% no-repeat, linear-gradient(to top, var(--cyan) 0 100%) 18px 100% / 4px 100% no-repeat; }
 .signal-bars.bars-0 { opacity: .22; }.signal-bars.bars-1 { background-size: 4px 25%, 4px 25%, 4px 25%, 4px 25%; }.signal-bars.bars-2 { background-size: 4px 25%, 4px 50%, 4px 50%, 4px 50%; }.signal-bars.bars-3 { background-size: 4px 25%, 4px 50%, 4px 75%, 4px 75%; }
 .font-rajdhani { font-family: Rajdhani, sans-serif; }.font-bebas { font-family: "Bebas Neue", sans-serif; }.font-mono { font-family: monospace; }
