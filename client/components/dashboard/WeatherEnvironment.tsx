@@ -10,10 +10,12 @@ export function WeatherEnvironment({ condition }: WeatherEnvironmentProps) {
   const isSnow = condition === "snow";
   const isNight = condition === "clear-night";
   const isFog = condition === "fog" || condition === "mist";
+  const isRain = condition === "rain" || condition === "drizzle";
   return (
     <div className={`weather-environment weather-${condition}`} aria-hidden="true">
       <div className="environment-glow" />
       {isStorm && <div className="lightning-layer" />}
+      {isRain && <div className="rain-layer"><i /><i /><i /><i /><i /><i /><i /><i /></div>}
       {isSnow && (
         <div className="snow-layer">
           <Snowflake /><Snowflake /><Snowflake /><Snowflake /><Snowflake />

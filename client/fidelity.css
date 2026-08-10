@@ -81,3 +81,18 @@
 .route-vehicle-motion img { position: absolute; left: 0; top: 0; width: 126px; height: 84px; object-fit: contain; filter: drop-shadow(0 0 7px rgba(0,175,255,.9)); }
 .dashboard-page, .dashboard-page .weather-environment, .dashboard-page .environment-glow { text-shadow: 1px 1px 3px rgba(0, 0, 0, 1); }
 .vehicle-platform { position: absolute; left: 23px; top: 50px; width: 82px; height: 15px; border-radius: 50%; background: rgba(0,175,255,.72); filter: blur(7px); box-shadow: 0 0 15px #00afff; }
+.route-segments { position: absolute; inset: 0; z-index: 2; display: grid; grid-template-columns: repeat(12, 1fr); pointer-events: none; }
+.route-segments span { border-right: 1px solid rgba(220,246,255,.38); }
+.route-segments span:last-child { border-right: 0; }
+.weather-advisory { position: absolute; left: 55px; top: 0; display: flex; align-items: center; gap: 9px; color: rgba(182,230,250,.72); font-size: 14px; letter-spacing: 2px; text-transform: uppercase; text-shadow: 1px 1px 3px rgba(0,0,0,1); }
+.weather-advisory span { width: 7px; height: 7px; border-radius: 50%; background: var(--cyan); box-shadow: 0 0 9px var(--cyan); }
+.trip-time-row { position: static; }
+.vehicle-status-strip { position: absolute; left: 575px; top: 523px; width: 460px; display: flex; align-items: center; justify-content: flex-end; gap: 16px; color: rgba(178,226,247,.8); font-size: 17px; letter-spacing: 1px; white-space: nowrap; }
+.vehicle-status-strip span { display: inline-flex; align-items: center; gap: 5px; }
+.vehicle-status-strip svg { color: var(--cyan); filter: drop-shadow(0 0 5px var(--cyan)); }
+.signal-bars { display: inline-block; width: 24px; height: 16px; background: linear-gradient(to top, var(--cyan) 0 100%) 0 100% / 4px 25% no-repeat, linear-gradient(to top, var(--cyan) 0 100%) 6px 100% / 4px 50% no-repeat, linear-gradient(to top, var(--cyan) 0 100%) 12px 100% / 4px 75% no-repeat, linear-gradient(to top, var(--cyan) 0 100%) 18px 100% / 4px 100% no-repeat; }
+.signal-bars.bars-0 { opacity: .22; }.signal-bars.bars-1 { background-size: 4px 25%, 4px 25%, 4px 25%, 4px 25%; }.signal-bars.bars-2 { background-size: 4px 25%, 4px 50%, 4px 50%, 4px 50%; }.signal-bars.bars-3 { background-size: 4px 25%, 4px 50%, 4px 75%, 4px 75%; }
+.font-rajdhani { font-family: Rajdhani, sans-serif; }.font-bebas { font-family: "Bebas Neue", sans-serif; }.font-mono { font-family: monospace; }
+.font-scale-90 { font-size: 90%; }.font-scale-100 { font-size: 100%; }.font-scale-110 { font-size: 110%; }
+.theme-preview { display: flex; align-items: center; gap: 9px; margin-top: 15px; color: rgba(180,222,240,.7); font-size: 13px; letter-spacing: 1px; text-transform: uppercase; }
+.theme-preview-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--cyan); box-shadow: 0 0 10px var(--cyan); }

@@ -70,3 +70,6 @@ export interface NetworkData {
 export type DistanceUnit = "km" | "mi";
 export type TemperatureUnit = "C" | "F";
 export type ThemeMode = "dynamic" | "static";
+export type TimeFormat = "12h" | "24h";
+export type DashboardFontStyle = "rajdhani" | "bebas" | "mono";
+export type FontScale = "90" | "100" | "110";

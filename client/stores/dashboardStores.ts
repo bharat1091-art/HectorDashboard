@@ -3,14 +3,18 @@ import { createMockTelemetryTicker } from "@/services/bluetoothObdService";
 import { fetchWeather } from "@/services/weatherService";
 import { getCurrentPosition } from "@/services/locationService";
 import {
+  DashboardFontStyle,
   DistanceUnit,
+  FontScale,
   LocationData,
   NetworkData,
   ObdConnectionState,
   TemperatureUnit,
   ThemeMode,
+  TimeFormat,
   TripRecord,
   VehicleData,
+  WeatherCondition,
   WeatherData,
 } from "@/types/dashboard";
 
@@ -150,11 +154,19 @@ interface SettingsStore {
   distanceUnit: DistanceUnit;
   temperatureUnit: TemperatureUnit;
   themeMode: ThemeMode;
+  staticTheme: WeatherCondition;
+  timeFormat: TimeFormat;
+  fontStyle: DashboardFontStyle;
+  fontScale: FontScale;
   setApiKey: (apiKey: string) => void;
   setRefreshInterval: (refreshInterval: number) => void;
   setDistanceUnit: (distanceUnit: DistanceUnit) => void;
   setTemperatureUnit: (temperatureUnit: TemperatureUnit) => void;
   setThemeMode: (themeMode: ThemeMode) => void;
+  setStaticTheme: (staticTheme: WeatherCondition) => void;
+  setTimeFormat: (timeFormat: TimeFormat) => void;
+  setFontStyle: (fontStyle: DashboardFontStyle) => void;
+  setFontScale: (fontScale: FontScale) => void;
 }
 
 export const useSettingsStore = create<SettingsStore>((set) => ({
@@ -163,11 +175,19 @@ export const useSettingsStore = create<SettingsStore>((set) => ({
   distanceUnit: "km",
   temperatureUnit: "C",
   themeMode: "dynamic",
+  staticTheme: "clouds",
+  timeFormat: "12h",
+  fontStyle: "rajdhani",
+  fontScale: "100",
   setApiKey: (apiKey) => set({ apiKey }),
   setRefreshInterval: (refreshInterval) => set({ refreshInterval }),
   setDistanceUnit: (distanceUnit) => set({ distanceUnit }),
   setTemperatureUnit: (temperatureUnit) => set({ temperatureUnit }),
   setThemeMode: (themeMode) => set({ themeMode }),
+  setStaticTheme: (staticTheme) => set({ staticTheme }),
+  setTimeFormat: (timeFormat) => set({ timeFormat }),
+  setFontStyle: (fontStyle) => set({ fontStyle }),
+  setFontScale: (fontScale) => set({ fontScale }),
 }));
 
 interface NetworkStore {

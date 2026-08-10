@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import {
   BatteryMedium,
   BluetoothConnected,
@@ -13,9 +14,10 @@ import {
   Thermometer,
   Timer,
   Zap,
+  Wifi,
 } from "lucide-react";
 import { Link } from "react-router-dom";
-import { TripRecord, VehicleData, WeatherData } from "@/types/dashboard";
+import { NetworkData, TimeFormat, TripRecord, VehicleData, WeatherCondition, WeatherData } from "@/types/dashboard";
 import { WeatherModeHint } from "./WeatherEnvironment";
 
 const VEHICLE_IMAGE = "https://api.builder.io/api/v1/image/assets/TEMP/9ce656fec5f9cdc32f1630019ab16c7d96149bfb?width=564";
@@ -43,22 +45,36 @@ export function DistanceSection({ trip, vehicle, unit }: { trip: TripRecord; veh
 
 export function RouteTracker({ progress }: { progress: number }) {
   const boundedProgress = Math.max(0, Math.min(100, progress));
-  return <section className="route-tracker"><div className="route-visual"><div className="route-track"><div className="route-track-remaining" /><div className="route-track-completed" style={{ width: `${boundedProgress}%` }} /></div><div className="route-flag route-start"><Flag size={31} /><span /></div><div className="route-flag route-end"><Flag size={31} /><span /></div><div className="route-vehicle-motion" style={{ left: `${8 + boundedProgress * 0.84}%` }}><span className="vehicle-platform" /><img src={VEHICLE_IMAGE} alt="Vehicle" /></div></div></section>;
+  return <section className="route-tracker"><div className="route-visual"><div className="route-grid" /><div className="route-track"><div className="route-track-remaining" /><div className="route-track-completed" style={{ width: `${boundedProgress}%` }} /><div className="route-segments">{Array.from({ length: 12 }, (_, index) => <span key={index} />)}</div></div><div className="route-flag route-start"><Flag size={31} /><span /></div><div className="route-flag route-end"><Flag size={31} /><span /></div><div className="route-vehicle-motion" style={{ left: `${8 + boundedProgress * 0.84}%` }}><span className="vehicle-platform" /><img src={VEHICLE_IMAGE} alt="Vehicle" /></div></div></section>;
 }
 
 export function TripTimeSection({ duration }: { duration: string }) {
   return <section className="trip-time"><Timer size={45} /><span className="trip-time-label">Trip Time</span><span className="trip-time-colon">:</span><strong>{duration}</strong><span className="trip-time-unit">h</span></section>;
 }
 
+export function WeatherAdvisory({ condition }: { condition: WeatherCondition }) {
+  const advisory = condition === "thunderstorm" ? "Thunderstorm Warning" : condition === "rain" || condition === "drizzle" ? "Heavy Rain Expected" : condition === "fog" || condition === "mist" ? "Fog Advisory Active" : condition === "snow" ? "Snowfall Warning" : condition === "clear-day" || condition === "clear-night" ? "Clear Visibility Conditions" : "Road Conditions Normal";
+  return <div className="weather-advisory"><span />{advisory}</div>;
+}
+
+export function VehicleStatusStrip({ vehicle, connection, network }: { vehicle: VehicleData; connection: string; network: NetworkData }) {
+  return <div className="vehicle-status-strip"><span><Zap size={15} /> {vehicle.batteryVoltage.toFixed(1)}V</span><span><Radio size={15} /> {vehicle.ignitionOn ? "ON" : "OFF"}</span><span className="network-status"><Wifi size={15} /> <i className={`signal-bars bars-${network.signalBars}`} /></span><span><BluetoothConnected size={15} /> {connection === "connected" ? "BT" : "--"}</span><span><Gauge size={15} /> {connection === "connected" ? "OBD" : "--"}</span></div>;
+}
+
 export function OutsideTemperatureCard({ temperature, unit }: { temperature: number; unit: string }) {
   return <GlassCard className="temperature-card"><div className="temp-layout"><div className="thermometer-art"><span className="thermometer-fill" /><span className="thermometer-bulb" /></div><div className="temp-value">{temperature}<sup>°{unit.toUpperCase()}</sup></div></div></GlassCard>;
 }
 
-export function TimeCard() {
+export function TimeCard({ format }: { format: TimeFormat }) {
+  const [, setTick] = useState(0);
+  useEffect(() => {
+    const timer = window.setInterval(() => setTick((value) => value + 1), 30000);
+    return () => window.clearInterval(timer);
+  }, []);
   const now = new Date();
-  const time = now.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit", hour12: false });
-  const meridiem = now.toLocaleTimeString([], { hour: "2-digit", hour12: true }).slice(-2);
-  return <GlassCard className="time-card"><div className="time-value">{time}<sup>{meridiem.toUpperCase()}</sup></div></GlassCard>;
+  const time = now.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit", hour12: format === "12h" });
+  const meridiem = now.toLocaleTimeString([], { hour: "2-digit", hour12: true }).slice(-2).toUpperCase();
+  return <GlassCard className="time-card"><div className="time-value">{time}{format === "12h" && <sup>{meridiem}</sup>}</div></GlassCard>;
 }
 
 export function DateCard() {
@@ -70,8 +86,8 @@ export function CabinTemperatureCard({ temperature }: { temperature: number }) {
   return <GlassCard className="cabin-card"><img src={VEHICLE_IMAGE} alt="Vehicle" /><div className="cabin-overlay" /><div className="cabin-info"><div className="cabin-temp">{temperature}<sup>°C</sup></div></div></GlassCard>;
 }
 
-export function DashboardSidebar({ weather, vehicle, temperatureUnit }: { weather: WeatherData; vehicle: VehicleData; temperatureUnit: string }) {
-  return <aside className="dashboard-sidebar"><OutsideTemperatureCard temperature={weather.temperatureC} unit={temperatureUnit} /><TimeCard /><DateCard /><CabinTemperatureCard temperature={vehicle.cabinTemperatureC} /></aside>;
+export function DashboardSidebar({ weather, vehicle, temperatureUnit, timeFormat }: { weather: WeatherData; vehicle: VehicleData; temperatureUnit: string; timeFormat: TimeFormat }) {
+  return <aside className="dashboard-sidebar"><OutsideTemperatureCard temperature={weather.temperatureC} unit={temperatureUnit} /><TimeCard format={timeFormat} /><DateCard /><CabinTemperatureCard temperature={vehicle.cabinTemperatureC} /></aside>;
 }
 
 export function BottomNavigation({ trip, onPrevious, onNext }: { trip: TripRecord; onPrevious: () => void; onNext: () => void }) {
