@@ -66,7 +66,7 @@
 .distance-section > .speed-metric .speed-unit { grid-column: 2; margin: 13px 0 0; width: 150px; height: 54px; align-self: end; line-height: 1; font-weight: 400; white-space: nowrap; }
 .distance-unit { line-height: 1; }
 .temp-value, .cabin-temp, .time-value { display: flex; align-items: baseline; }
-.temp-value sup, .cabin-temp sup, .time-value sup { vertical-align: baseline; position: static; margin-left: 4px; line-height: 1; }
+.temp-value sup, .cabin-temp sup { vertical-align: baseline; position: static; margin-left: 4px; line-height: 1; }
 .trip-time { justify-content: center; }
 .dashboard-sidebar { background: linear-gradient(145deg, rgba(4,16,37,.46), rgba(4,10,24,.34)); border-radius: 24px; box-shadow: inset 0 0 34px rgba(0,175,255,.05); }
 .route-visual { position: relative; }
@@ -84,10 +84,10 @@
 .route-segments { position: absolute; inset: 0; z-index: 2; display: grid; grid-template-columns: repeat(12, 1fr); pointer-events: none; }
 .route-segments span { border-right: 1px solid rgba(220,246,255,.38); }
 .route-segments span:last-child { border-right: 0; }
-.weather-advisory { position: absolute; left: 55px; top: 0; display: flex; align-items: center; gap: 9px; color: rgba(182,230,250,.72); font-size: 14px; letter-spacing: 2px; text-transform: uppercase; text-shadow: 1px 1px 3px rgba(0,0,0,1); }
+.weather-advisory { position: absolute; left: 55px; top: 130px; display: flex; align-items: center; gap: 9px; color: rgba(182,230,250,.72); font-size: 20px; letter-spacing: 2px; text-align: left; text-transform: uppercase; text-shadow: 1px 1px 3px rgba(0,0,0,1); }
 .weather-advisory span { width: 7px; height: 7px; border-radius: 50%; background: var(--cyan); box-shadow: 0 0 9px var(--cyan); }
 .trip-time-row { position: static; }
-.vehicle-status-strip { position: absolute; left: 575px; top: 523px; width: 460px; display: flex; align-items: center; justify-content: flex-end; gap: 16px; color: rgba(178,226,247,.8); font-size: 17px; letter-spacing: 1px; white-space: nowrap; }
+.vehicle-status-strip { position: absolute; left: 575px; top: 523px; width: 460px; display: flex; align-items: center; justify-content: flex-end; gap: 16px; color: rgba(178,226,247,.8); font-size: 40px; letter-spacing: 1px; white-space: nowrap; }
 .vehicle-status-strip span { display: inline-flex; align-items: center; gap: 5px; }
 .vehicle-status-strip svg { color: var(--cyan); filter: drop-shadow(0 0 5px var(--cyan)); }
 .signal-bars { display: inline-block; width: 24px; height: 16px; background: linear-gradient(to top, var(--cyan) 0 100%) 0 100% / 4px 25% no-repeat, linear-gradient(to top, var(--cyan) 0 100%) 6px 100% / 4px 50% no-repeat, linear-gradient(to top, var(--cyan) 0 100%) 12px 100% / 4px 75% no-repeat, linear-gradient(to top, var(--cyan) 0 100%) 18px 100% / 4px 100% no-repeat; }

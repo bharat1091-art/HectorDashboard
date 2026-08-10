@@ -74,7 +74,7 @@ export function TimeCard({ format }: { format: TimeFormat }) {
   const now = new Date();
   const time = now.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit", hour12: format === "12h" });
   const meridiem = now.toLocaleTimeString([], { hour: "2-digit", hour12: true }).slice(-2).toUpperCase();
-  return <GlassCard className="time-card"><div className="time-value">{time}{format === "12h" && <sup>{meridiem}</sup>}</div></GlassCard>;
+  return <GlassCard className="time-card"><div className="time-value">{format === "12h" ? `${time} ${meridiem}` : time}</div></GlassCard>;
 }
 
 export function DateCard() {
