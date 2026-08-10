@@ -25,7 +25,6 @@
 .speed-live { display: none; }
 .route-tracker { position: absolute; left: 0; top: 292px; width: 1062px; min-height: 194px; height: 194px; padding: 0; border: 0; overflow: hidden; }
 .route-visual { height: 194px; margin: 0; overflow: hidden; }
-.route-art { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: fill; opacity: .95; }
 .trip-time { position: absolute; left: 362px; top: 508px; width: 482px; max-width: none; min-height: 83px; height: 83px; margin: 0; gap: 13px; padding: 0; }
 .trip-time-label { font-size: 50px; }
 .trip-time strong { font-size: 65px; }
@@ -60,3 +59,24 @@
 .hmi-scale-viewport { width: 100vw; height: 100svh; display: grid; place-items: center; overflow: hidden; }
 .dashboard-shell { transform-origin: center center; transform: scale(min(1, calc(100vw / 1506), calc(100svh / 941))); }
 .weather-symbol { transform: none; }
+
+.distance-section > .speed-metric { display: grid; grid-template-columns: auto auto; grid-template-rows: auto auto; justify-content: center; align-items: baseline; column-gap: 6px; margin-left: 0; }
+.distance-section > .speed-metric .metric-label { grid-column: 1 / -1; margin-left: 0; justify-self: center; }
+.distance-section > .speed-metric .speed-value { grid-column: 1; margin-top: 0; line-height: .84; }
+.distance-section > .speed-metric .speed-unit { grid-column: 2; margin: 0; align-self: end; line-height: 1; white-space: nowrap; }
+.distance-unit { line-height: 1; }
+.temp-value, .cabin-temp, .time-value { display: flex; align-items: baseline; }
+.temp-value sup, .cabin-temp sup, .time-value sup { vertical-align: baseline; position: static; margin-left: 4px; line-height: 1; }
+.trip-time { justify-content: center; }
+.dashboard-sidebar { background: linear-gradient(145deg, rgba(4,16,37,.46), rgba(4,10,24,.34)); border-radius: 24px; box-shadow: inset 0 0 34px rgba(0,175,255,.05); }
+.route-visual { position: relative; }
+.route-track { position: absolute; left: 72px; right: 72px; top: 97px; height: 10px; border-radius: 999px; overflow: hidden; transform: translateY(-50%); background: rgba(174,216,233,.26); box-shadow: 0 0 2px rgba(190,233,255,.5); }
+.route-track-remaining { position: absolute; inset: 0; background: rgba(174,216,233,.24); }
+.route-track-completed { position: absolute; left: 0; top: 0; bottom: 0; border-radius: inherit; background: linear-gradient(90deg, #00afff, #5ec6ff); box-shadow: 0 0 10px #00afff, 0 0 24px rgba(0,175,255,.9); transition: width 1.2s cubic-bezier(.22,.61,.36,1); }
+.route-flag { position: absolute; top: 58px; display: flex; flex-direction: column; align-items: center; transform: translateX(-50%); z-index: 2; }
+.route-flag svg { fill: #00afff; color: #b9edff; filter: drop-shadow(0 0 6px #00afff); }
+.route-flag span { width: 3px; height: 38px; margin-top: -8px; border-radius: 2px; background: #00afff; box-shadow: 0 0 8px #00afff; }
+.route-start { left: 6.8%; }.route-end { left: 93.2%; }.route-end svg { fill: #c00f0c; color: #ffe0dc; filter: drop-shadow(0 0 6px #c00f0c); }.route-end span { background: #c00f0c; box-shadow: 0 0 8px #c00f0c; }
+.route-vehicle-motion { position: absolute; top: 45px; width: 126px; height: 70px; transform: translateX(-50%); transition: left 1.2s cubic-bezier(.22,.61,.36,1); z-index: 3; pointer-events: none; }
+.route-vehicle-motion img { position: absolute; left: 0; top: 0; width: 126px; height: 84px; object-fit: contain; filter: drop-shadow(0 0 7px rgba(0,175,255,.9)); }
+.vehicle-platform { position: absolute; left: 23px; top: 50px; width: 82px; height: 15px; border-radius: 50%; background: rgba(0,175,255,.72); filter: blur(7px); box-shadow: 0 0 15px #00afff; }

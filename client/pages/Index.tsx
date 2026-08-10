@@ -36,7 +36,7 @@ export default function Index() {
             <section className="dashboard-main">
               <div className="location-pulse"><LocateFixed size={14} /> <span>GPS POSITION LOCKED</span></div>
               <DistanceSection trip={trip} vehicle={vehicle} unit={distanceUnit} />
-              <RouteTracker />
+              <RouteTracker progress={trip.progressPercent} />
               <TripTimeSection duration={trip.durationLabel} />
               <TelemetryStrip vehicle={vehicle} connection={connection} />
             </section>
