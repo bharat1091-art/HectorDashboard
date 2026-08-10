@@ -72,9 +72,10 @@ export function TimeCard({ format }: { format: TimeFormat }) {
     return () => window.clearInterval(timer);
   }, []);
   const now = new Date();
-  const time = now.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit", hour12: format === "12h" });
+  const localizedTime = now.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit", hour12: format === "12h" });
+  const time = format === "12h" ? localizedTime.replace(/\s?(AM|PM)$/i, "") : localizedTime;
   const meridiem = now.toLocaleTimeString([], { hour: "2-digit", hour12: true }).slice(-2).toUpperCase();
-  return <GlassCard className="time-card"><div className="time-value">{format === "12h" ? `${time} ${meridiem}` : time}</div></GlassCard>;
+  return <GlassCard className="time-card"><div className="time-value">{time}{format === "12h" && <span className="time-meridiem">{meridiem}</span>}</div></GlassCard>;
 }
 
 export function DateCard() {

@@ -34,8 +34,8 @@
 .dashboard-card { border-radius: 15px; background: rgba(217,217,217,.36); border: 0; backdrop-filter: none; }
 .temp-layout { gap: 22px; padding: 20px 0 0; }
 .temp-value { font-size: 120px; }
-.time-value { font-size: 155px; margin: 25px 0 0; }
-.time-value sup { color: #00afff; font: 600 50px Rajdhani, sans-serif; vertical-align: top; margin-left: 2px; }
+.time-value { font-size: 155px; margin: 25px 0 0; white-space: nowrap; }
+.time-meridiem { color: #00afff; font: 600 50px Rajdhani, sans-serif; align-self: baseline; margin-left: 4px; line-height: 1; }
 .date-value { font-size: 55px; margin-top: 24px; }
 .date-divider { font-size: 50px; }
 .date-icon { display: none; }
