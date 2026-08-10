@@ -10,7 +10,7 @@ export function createMockTelemetryTicker(
   onTick: (data: VehicleData) => void,
   intervalMs = 2000,
 ) {
-  let speed = 92;
+  let speed = 110;
   let cabinTemp = 27;
   let distance = 235.6;
 

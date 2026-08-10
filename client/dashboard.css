@@ -21,8 +21,6 @@ button { cursor: pointer; }
 .weather-fog, .weather-mist { background: linear-gradient(180deg, #43576c, #1e2b3a 75%); }
 .weather-snow { background: linear-gradient(180deg, #214261, #12243c 65%, #081221); }
 .environment-glow { position: absolute; inset: -20%; background: radial-gradient(ellipse at 50% 90%, rgba(0, 175, 255, .19), transparent 40%); animation: pulse-glow 4s ease-in-out infinite; }
-.weather-horizon { position: absolute; left: 0; right: 0; bottom: 0; height: 30%; background: linear-gradient(180deg, transparent, rgba(1, 8, 23, .78) 40%, #030712 100%); }
-.weather-horizon::after { content: ""; position: absolute; inset: 35% 0 0; opacity: .22; background: repeating-linear-gradient(175deg, transparent 0 36px, rgba(0, 175, 255, .32) 37px 38px, transparent 39px 66px); transform: perspective(360px) rotateX(50deg); transform-origin: bottom; }
 .lightning-layer { position: absolute; inset: 0; background: rgba(179, 230, 255, .8); opacity: 0; animation: lightning-flash 7s ease-in-out infinite; mix-blend-mode: screen; }
 .lightning-layer::after { content: ""; position: absolute; right: 18%; top: 8%; width: 5px; height: 45%; background: #b7f0ff; clip-path: polygon(48% 0, 100% 0, 64% 44%, 94% 43%, 16% 100%, 42% 54%, 6% 55%); filter: drop-shadow(0 0 13px #b8edff); }
 .snow-layer { position: absolute; inset: 0; color: rgba(226, 248, 255, .85); }

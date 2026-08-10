@@ -23,7 +23,6 @@ export function WeatherEnvironment({ condition }: WeatherEnvironmentProps) {
         <div className="star-layer"><i /><i /><i /><i /><i /><i /><i /></div>
       )}
       {isFog && <div className="fog-layer"><span /><span /><span /></div>}
-      <div className="weather-horizon" />
     </div>
   );
 }

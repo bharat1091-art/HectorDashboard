@@ -17,7 +17,7 @@
 .distance-section { position: absolute; left: 55px; top: 17px; width: 950px; height: 342px; min-height: 342px; margin: 0; grid-template-columns: 611px 1px 277px; gap: 0; }
 .distance-value { font-size: clamp(190px, 19vw, 285px); }
 .distance-unit { font-size: 100px; left: 496px; top: 123px; right: auto; bottom: auto; }
-.metric-separator { height: 168px; margin-left: 14px; }
+.metric-separator { height: 168px; margin-left: 0; }
 .distance-section > .speed-metric { margin-left: 38px; margin-top: 21px; width: 300px; }
 .metric-label { margin-left: 38px; font-size: 50px; font-weight: 600; }
 .speed-value { margin-top: 91px; font-size: 120px; }
@@ -60,10 +60,10 @@
 .dashboard-shell { transform-origin: center center; transform: scale(min(1, calc(100vw / 1506), calc(100svh / 941))); }
 .weather-symbol { transform: none; }
 
-.distance-section > .speed-metric { display: grid; grid-template-columns: auto auto; grid-template-rows: auto auto; justify-content: center; align-items: baseline; column-gap: 6px; margin-left: 0; }
+.distance-section > .speed-metric { display: grid; grid-template-columns: auto auto; grid-template-rows: auto auto; justify-content: center; align-items: baseline; column-gap: 6px; margin-left: auto; }
 .distance-section > .speed-metric .metric-label { grid-column: 1 / -1; margin-left: 11px; margin-right: auto; width: 200px; justify-self: center; }
 .distance-section > .speed-metric .speed-value { grid-column: 1; margin-top: 0; line-height: .84; }
-.distance-section > .speed-metric .speed-unit { grid-column: 2; margin: 13px 0 0; width: 150px; height: 54px; align-self: end; line-height: 1; white-space: nowrap; }
+.distance-section > .speed-metric .speed-unit { grid-column: 2; margin: 13px 0 0; width: 150px; height: 54px; align-self: end; line-height: 1; font-weight: 400; white-space: nowrap; }
 .distance-unit { line-height: 1; }
 .temp-value, .cabin-temp, .time-value { display: flex; align-items: baseline; }
 .temp-value sup, .cabin-temp sup, .time-value sup { vertical-align: baseline; position: static; margin-left: 4px; line-height: 1; }
@@ -79,5 +79,5 @@
 .route-start { left: 6.8%; }.route-end { left: 93.2%; }.route-end svg { fill: #c00f0c; color: #ffe0dc; filter: drop-shadow(0 0 6px #c00f0c); }.route-end span { background: #c00f0c; box-shadow: 0 0 8px #c00f0c; }
 .route-vehicle-motion { position: absolute; top: 45px; width: 126px; height: 70px; transform: translateX(-50%); transition: left 1.2s cubic-bezier(.22,.61,.36,1); z-index: 3; pointer-events: none; }
 .route-vehicle-motion img { position: absolute; left: 0; top: 0; width: 126px; height: 84px; object-fit: contain; filter: drop-shadow(0 0 7px rgba(0,175,255,.9)); }
-.dashboard-page, .dashboard-page .weather-environment, .dashboard-page .environment-glow, .dashboard-page .weather-horizon { text-shadow: 1px 1px 3px rgba(0, 0, 0, 1); }
+.dashboard-page, .dashboard-page .weather-environment, .dashboard-page .environment-glow { text-shadow: 1px 1px 3px rgba(0, 0, 0, 1); }
 .vehicle-platform { position: absolute; left: 23px; top: 50px; width: 82px; height: 15px; border-radius: 50%; background: rgba(0,175,255,.72); filter: blur(7px); box-shadow: 0 0 15px #00afff; }
