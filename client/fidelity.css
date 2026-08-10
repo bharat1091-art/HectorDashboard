@@ -1,7 +1,7 @@
 /* Figma fidelity layout */
-.dashboard-shell { position: relative; width: 1609px; height: 941px; margin: 0 auto; padding: 0; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start; overflow: visible; }
-.dashboard-panel { position: relative; width: 1202px; height: 941px; min-height: 0; border: 0; border-radius: 0; background: transparent; box-shadow: none; backdrop-filter: none; overflow: visible; grid-template-rows: 167px 632px 134px; align-content: start; } .dashboard-panel::before { content: ""; position: absolute; z-index: 0; left: 72px; top: 12px; width: 1062px; height: 941px; border: 1px solid rgba(0,175,255,.38); border-radius: 24px; background: linear-gradient(145deg, rgba(4,16,37,.82), rgba(4,10,24,.68)); box-shadow: inset 0 0 50px rgba(0,175,255,.07), 0 24px 90px rgba(0,0,0,.35), 0 0 35px rgba(0,175,255,.1); backdrop-filter: blur(20px); } .dashboard-panel > * { position: relative; z-index: 1; }
-.weather-header { position: relative; width: 1062px; height: 167px; min-height: 167px; margin-left: 72px; padding: 0; display: block; border-bottom: 0; }
+.dashboard-shell { position: relative; width: 1506px; height: 941px; margin: 0 auto; padding: 0; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start; overflow: visible; }
+.dashboard-panel { position: relative; width: 1062px; height: 941px; min-height: 0; border: 0; border-radius: 0; background: transparent; box-shadow: none; backdrop-filter: none; overflow: visible; grid-template-rows: 167px 632px 134px; align-content: start; } .dashboard-panel::before { content: ""; position: absolute; z-index: 0; left: 0; top: 0; width: 1062px; height: 941px; border: 1px solid rgba(0,175,255,.38); border-radius: 24px; background: linear-gradient(145deg, rgba(4,16,37,.82), rgba(4,10,24,.68)); box-shadow: inset 0 0 50px rgba(0,175,255,.07), 0 24px 90px rgba(0,0,0,.35), 0 0 35px rgba(0,175,255,.1); backdrop-filter: blur(20px); } .dashboard-panel > * { position: relative; z-index: 1; }
+.weather-header { position: relative; width: 1062px; height: 167px; min-height: 167px; margin-left: 0; padding: 0; display: block; border-bottom: 0; }
 .weather-header::after { left: 44%; right: 0; bottom: 0; height: 1px; box-shadow: 0 0 9px var(--cyan); }
 .weather-summary { position: absolute; left: 0; top: 0; width: 425px; height: 167px; margin: 0; display: block; } .weather-summary > div:nth-child(2) { position: absolute; left: 152px; top: 66px; } .weather-symbol { position: absolute; left: 0; top: 0; width: 155px; height: 152px; }
 .weather-condition { font-size: 48px; }
@@ -12,7 +12,7 @@
 .region-name { font-size: 20px; margin-top: 4px; }
 .header-network { left: 80px; right: auto; bottom: 18px; }
 .dashboard-content { display: contents; }
-.dashboard-main { position: relative; min-width: 0; width: 1202px; height: 632px; display: block; padding: 0; }
+.dashboard-main { position: relative; min-width: 0; min-height: 0; width: 1062px; height: 632px; display: block; padding: 0; }
 .location-pulse { display: none; }
 .distance-section { position: absolute; left: 182px; top: 17px; width: 923px; height: 342px; min-height: 342px; margin: 0; grid-template-columns: 611px 1px 277px; gap: 0; }
 .distance-value { font-size: clamp(190px, 19vw, 285px); }
@@ -23,7 +23,7 @@
 .speed-value { margin-top: 91px; font-size: 120px; }
 .speed-unit { margin-left: 119px; margin-top: auto; font-size: 50px; }
 .speed-live { display: none; }
-.route-tracker { position: absolute; left: 72px; top: 292px; width: 1062px; min-height: 194px; height: 194px; padding: 0; border: 0; overflow: hidden; }
+.route-tracker { position: absolute; left: 0; top: 292px; width: 1062px; min-height: 194px; height: 194px; padding: 0; border: 0; overflow: hidden; }
 .route-visual { height: 194px; margin: 0; overflow: hidden; }
 .route-art { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: fill; opacity: .95; }
 .trip-time { position: absolute; left: 362px; top: 508px; width: 482px; max-width: none; min-height: 83px; height: 83px; margin: 0; gap: 13px; padding: 0; }
@@ -31,7 +31,7 @@
 .trip-time strong { font-size: 65px; }
 .trip-time-unit { font-size: 50px; }
 .telemetry-strip { display: none; }
-.dashboard-sidebar { position: absolute; z-index: 2; left: 1137px; top: 0; width: 472px; height: 942px; padding: 0 22px; grid-template-rows: 198px 294px 198px 198px; gap: 15px; }
+.dashboard-sidebar { position: absolute; z-index: 2; left: 1078px; top: 0; width: 428px; height: 942px; padding: 0; grid-template-columns: 1fr; grid-template-rows: 198px 294px 198px 198px; gap: 16px; }
 .dashboard-card { border-radius: 15px; background: rgba(217,217,217,.36); border: 0; backdrop-filter: none; }
 .temp-layout { gap: 22px; padding: 20px 0 0; }
 .temp-value { font-size: 120px; }
@@ -57,60 +57,6 @@
 .settings-page .weather-environment { z-index: -1; }
 .settings-shell { position: relative; z-index: 1; }
 
-@media (min-width: 901px) and (max-width: 1200px) {
-  .dashboard-shell { grid-template-columns: minmax(0, 2.15fr) minmax(280px, 1fr); }
-  .distance-value { font-size: clamp(130px, 17vw, 190px); }
-  .distance-unit { font-size: 70px; }
-  .speed-value { font-size: 95px; }
-  .trip-time-label { font-size: 36px; }
-  .trip-time strong { font-size: 54px; }
-  .trip-time-unit { font-size: 38px; }
-  .settings-link { font-size: 34px; }
-}
-
-@media (max-width: 900px) {
-  .dashboard-shell { width: 100%; height: auto; padding: 0; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start; }
-  .dashboard-panel { height: auto; min-height: 100svh; border-radius: 0; grid-template-rows: auto auto auto; }
-  .dashboard-sidebar { position: relative; left: auto; top: auto; width: auto; height: auto; }
-  .dashboard-panel::before { left: 0; top: 0; width: 100%; height: 100%; border-radius: 0; }
-  .weather-header { position: relative; width: auto; height: 170px; min-height: 170px; margin-left: 0; padding: 34px 20px 18px; display: grid; grid-template-columns: 1fr; align-items: center; gap: 17px; }
-  .weather-summary { position: relative; left: auto; top: auto; width: auto; height: auto; display: flex; }
-  .weather-summary > div:nth-child(2) { position: static; }
-  .weather-symbol { position: relative; left: auto; top: auto; width: 58px; height: 55px; }
-  .location-summary { position: relative; left: auto; top: auto; width: auto; display: flex; }
-  .location-summary .location-icon { width: 25px; height: 25px; flex-basis: 25px; margin-top: 0; }
-  .weather-summary, .location-summary { margin: 0; align-self: auto; }
-  .weather-condition, .city-name { font-size: 34px; }
-  .live-status { font-size: 14px; }
-  .region-name { font-size: 12px; }
-  .dashboard-main { display: grid; grid-template-rows: auto auto auto auto; padding: 23px 18px 12px; gap: 20px; }
-  .distance-section { position: relative; left: auto; top: auto; width: 100%; min-height: 157px; margin: 0; grid-template-columns: 1fr 1px .48fr; gap: 11px; }
-  .distance-value { font-size: clamp(102px, 30vw, 155px); }
-  .distance-unit { left: auto; top: auto; right: 0; font-size: 34px; bottom: -2px; }
-  .metric-separator { height: 102px; margin-left: 0; }
-  .distance-section > .speed-metric { margin-left: 0; }
-  .metric-label { margin-left: 0; font-size: 24px; }
-  .speed-value { margin-top: 0; font-size: clamp(68px, 19vw, 100px); }
-  .speed-unit { margin-left: 0; margin-top: 0; font-size: 23px; }
-  .route-tracker { position: relative; left: auto; top: auto; width: 100%; height: 148px; min-height: 148px; }
-  .route-visual { height: 148px; min-height: 148px; width: 100%; }
-  .trip-time { position: relative; left: auto; top: auto; width: 100%; max-width: none; min-height: 55px; }
-  .trip-time-label { font-size: 20px; }
-  .trip-time strong { font-size: 48px; }
-  .trip-time-unit { font-size: 30px; }
-  .dashboard-sidebar { height: auto; padding: 0 18px 18px; grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(2, 150px); gap: 10px; }
-  .temp-value { font-size: 70px; }
-  .time-value { font-size: 86px; margin-top: 25px; }
-  .time-value sup { font-size: 30px; }
-  .date-value { font-size: 31px; margin-top: 22px; }
-  .date-divider { font-size: 22px; }
-  .cabin-info { padding: 25px 0 0 50%; }
-  .cabin-card img { width: 70%; height: 100%; }
-  .cabin-temp { font-size: 65px; }
-  .bottom-navigation { height: 87px; min-height: 87px; margin: 0 18px; padding: 0; grid-template-columns: 40px 1fr 40px 1px minmax(85px,.7fr); gap: 4px; }
-  .trip-arrow svg { width: 33px; }
-  .trip-selector { font-size: 30px; }
-  .settings-link { font-size: 11px; flex-direction: column; gap: 4px; }
-  .settings-link svg { width: 28px; height: 28px; }
-  .navigation-divider { height: 58px; }
-}
+.hmi-scale-viewport { width: 100vw; height: 100svh; display: grid; place-items: center; overflow: hidden; }
+.dashboard-shell { transform-origin: center center; transform: scale(min(1, calc(100vw / 1506), calc(100svh / 941))); }
+.weather-symbol { transform: none; }
