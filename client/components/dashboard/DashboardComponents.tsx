@@ -1,12 +1,15 @@
 import { useEffect, useState } from "react";
 import {
+  BatteryCharging,
   BatteryMedium,
   BluetoothConnected,
+  CarFront,
   CalendarDays,
   Flag,
   ChevronLeft,
   ChevronRight,
   Clock3,
+  Fuel,
   Gauge,
   MapPin,
   Radio,
@@ -15,6 +18,7 @@ import {
   Timer,
   Zap,
   Wifi,
+  Power,
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { NetworkData, TimeFormat, TripRecord, VehicleData, WeatherCondition, WeatherData } from "@/types/dashboard";
@@ -57,8 +61,13 @@ export function WeatherAdvisory({ condition }: { condition: WeatherCondition }) 
   return <div className="weather-advisory"><span />{advisory}</div>;
 }
 
+export function VehicleMetricsPanel({ vehicle, duration }: { vehicle: VehicleData; duration: string }) {
+  const [frontLeft, frontRight, rearLeft, rearRight] = vehicle.tirePressurePsi;
+  return <section className="vehicle-metrics-panel"><div className="metrics-cell metrics-trip-time"><Timer size={26} /><span className="metrics-label">Trip Time</span><strong>{duration}</strong><em>h</em></div><div className="metrics-cell fuel-metric"><span className="metrics-label">FUEL</span><Fuel size={25} /><strong>{vehicle.fuelPercent}%</strong><div className="fuel-bar"><i style={{ width: `${vehicle.fuelPercent}%` }} /></div><small>E</small><small>F</small></div><div className="metrics-cell range-metric"><span className="metrics-label">RANGE</span><Gauge size={25} /><strong>{vehicle.rangeKm}</strong><em>KM</em></div><div className="metrics-cell engine-metric"><span className="metrics-label">ENGINE TEMP</span><Thermometer size={25} /><strong>{vehicle.engineTemperatureC}°C</strong><i className="engine-temp-status" /></div><div className="metrics-cell tpms-metric"><span className="metrics-label">TIRE PRESSURE (TPMS)</span><div className="tpms-visual"><span className="tpms-front-left">{frontLeft}<small>PSI</small></span><span className="tpms-front-right">{frontRight}<small>PSI</small></span><span className="tpms-rear-left">{rearLeft}<small>PSI</small></span><span className="tpms-rear-right">{rearRight}<small>PSI</small></span><CarFront size={72} /></div></div></section>;
+}
+
 export function VehicleStatusStrip({ vehicle, connection, network }: { vehicle: VehicleData; connection: string; network: NetworkData }) {
-  return <div className="vehicle-status-strip"><span><Zap size={15} /> {vehicle.batteryVoltage.toFixed(1)}V</span><span><Radio size={15} /> {vehicle.ignitionOn ? "ON" : "OFF"}</span><span className="network-status"><Wifi size={15} /> <i className={`signal-bars bars-${network.signalBars}`} /></span><span><BluetoothConnected size={15} /> {connection === "connected" ? "BT" : "--"}</span><span><Gauge size={15} /> {connection === "connected" ? "OBD" : "--"}</span></div>;
+  return <div className="vehicle-status-strip"><span><Power size={23} /> <b>IGNITION</b> {vehicle.ignitionOn ? "ON" : "OFF"}</span><span><BatteryCharging size={23} /> <b>BATTERY</b> {vehicle.batteryVoltage.toFixed(1)} V <small>CHARGING</small></span><span><BluetoothConnected size={23} /> <b>BT OBD</b> {connection === "connected" ? "CONNECTED" : "DISCONNECTED"}</span><span><Wifi size={23} /> <b>NETWORK</b> <i className={`signal-bars bars-${network.signalBars}`} /> {network.connectivityType === "cellular" ? "4G" : network.online ? "4G" : "OFFLINE"}</span></div>;
 }
 
 export function OutsideTemperatureCard({ temperature, unit }: { temperature: number; unit: string }) {

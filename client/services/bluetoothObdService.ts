@@ -24,7 +24,11 @@ export function createMockTelemetryTicker(
       avgSpeedKph: 100,
       distanceTraveledKm: Math.round(distance * 10) / 10,
       cabinTemperatureC: Math.round(cabinTemp),
-      batteryVoltage: 12.6,
+      fuelPercent: 58,
+      rangeKm: 420,
+      engineTemperatureC: Math.round(92 + (cabinTemp - 27) * 2),
+      tirePressurePsi: [32, 33, 32, 34],
+      batteryVoltage: 13.6,
       ignitionOn: true,
       engineOn: true,
     });

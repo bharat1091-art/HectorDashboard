@@ -34,7 +34,11 @@ const defaultVehicle: VehicleData = {
   avgSpeedKph: 100,
   distanceTraveledKm: 236.1,
   cabinTemperatureC: 27,
-  batteryVoltage: 12.6,
+  fuelPercent: 58,
+  rangeKm: 420,
+  engineTemperatureC: 92,
+  tirePressurePsi: [32, 33, 32, 34],
+  batteryVoltage: 13.6,
   ignitionOn: true,
   engineOn: true,
 };

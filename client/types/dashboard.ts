@@ -33,6 +33,10 @@ export interface VehicleData {
   avgSpeedKph: number;
   distanceTraveledKm: number;
   cabinTemperatureC: number;
+  fuelPercent: number;
+  rangeKm: number;
+  engineTemperatureC: number;
+  tirePressurePsi: [number, number, number, number];
   batteryVoltage: number;
   ignitionOn: boolean;
   engineOn: boolean;

@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { Activity, LocateFixed } from "lucide-react";
 import { useLocationStore, useNetworkStore, useSettingsStore, useTripStore, useVehicleStore, useWeatherStore, startVehicleTelemetry } from "@/stores/dashboardStores";
 import { WeatherEnvironment } from "@/components/dashboard/WeatherEnvironment";
-import { BottomNavigation, DashboardSidebar, DistanceSection, RouteTracker, TelemetryStrip, TripTimeSection, VehicleStatusStrip, WeatherAdvisory, WeatherHeader } from "@/components/dashboard/DashboardComponents";
+import { BottomNavigation, DashboardSidebar, DistanceSection, RouteTracker, TelemetryStrip, VehicleMetricsPanel, VehicleStatusStrip, WeatherAdvisory, WeatherHeader } from "@/components/dashboard/DashboardComponents";
 
 export default function Index() {
   const { weather, refreshWeather } = useWeatherStore();
@@ -40,10 +40,10 @@ export default function Index() {
               <WeatherAdvisory condition={activeCondition} />
               <DistanceSection trip={trip} vehicle={vehicle} unit={distanceUnit} />
               <RouteTracker progress={routeProgress} />
-              <div className="trip-time-row"><TripTimeSection duration={trip.durationLabel} /><VehicleStatusStrip vehicle={vehicle} connection={connection} network={network} /></div>
-              <TelemetryStrip vehicle={vehicle} connection={connection} />
+              <VehicleMetricsPanel vehicle={vehicle} duration={trip.durationLabel} />
             </section>
             <BottomNavigation trip={trip} onPrevious={previousTrip} onNext={nextTrip} />
+            <VehicleStatusStrip vehicle={vehicle} connection={connection} network={network} />
           </div>
           <DashboardSidebar weather={{ ...weather, temperatureC: temperature }} vehicle={vehicle} temperatureUnit={temperatureUnit} timeFormat={timeFormat} />
         </div>
