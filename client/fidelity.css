@@ -94,12 +94,13 @@
 .lower-dashboard-area { position: absolute; left: 55px; top: 653px; width: 950px; height: 185px; display: grid; font-size: 15px; grid-template-columns: 64% 36%; grid-template-rows: 125px 60px; overflow: hidden; border: 1px solid rgba(94,198,255,.24); border-radius: 14px; background: linear-gradient(145deg, rgba(4,16,37,.72), rgba(4,10,24,.54)); box-shadow: inset 0 0 25px rgba(0,175,255,.05), 0 0 15px rgba(0,175,255,.05); }
 .vehicle-metrics-panel { grid-column: 1; grid-row: 1; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); min-width: 0; }
 .lower-dashboard-area::before { display: none; }
-.metrics-cell { position: relative; grid-row: 1; min-width: 0; padding: 13px 16px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px; border-right: 1px solid rgba(94,198,255,.2); color: rgba(220,242,252,.9); text-align: center; }
+.metrics-cell { position: relative; grid-row: 1; min-width: 0; padding: 13px 16px; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; gap: 5px; border-right: 1px solid rgba(94,198,255,.2); color: rgba(220,242,252,.9); text-align: center; }
 .metrics-cell:last-child { border-right: 0; }
 .metrics-cell svg { color: var(--cyan); flex: 0 0 auto; filter: drop-shadow(0 0 5px var(--cyan)); }
-.metrics-label { display: block; color: rgba(176,219,240,.62); font-size: 20px; line-height: 1; letter-spacing: 2px; white-space: nowrap; }
+.metrics-label { height: 26px; display: flex; align-items: center; justify-content: center; color: rgba(176,219,240,.62); font-size: 20px; line-height: 1; letter-spacing: 2px; white-space: nowrap; }
 .metrics-heading, .metrics-reading { display: flex; align-items: center; justify-content: center; }
-.metrics-heading { gap: 7px; }
+.metrics-heading { height: 26px; gap: 7px; }
+.metrics-heading .metrics-label { height: auto; }
 .metrics-reading { gap: 5px; }
 .metrics-cell strong { color: #fff; font-family: "Bebas Neue", sans-serif; font-size: 42px; line-height: .9; text-align: center; }
 .metrics-cell em { color: var(--cyan); font-style: normal; font-size: 18px; line-height: 1; }
