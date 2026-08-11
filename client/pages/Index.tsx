@@ -40,9 +40,8 @@ export default function Index() {
               <WeatherAdvisory condition={activeCondition} />
               <DistanceSection trip={trip} vehicle={vehicle} unit={distanceUnit} />
               <RouteTracker progress={routeProgress} />
-              <VehicleMetricsPanel vehicle={vehicle} duration={trip.durationLabel} />
             </section>
-            <BottomNavigation trip={trip} onPrevious={previousTrip} onNext={nextTrip} />
+            <div className="lower-dashboard-area"><VehicleMetricsPanel vehicle={vehicle} duration={trip.durationLabel} /><BottomNavigation trip={trip} onPrevious={previousTrip} onNext={nextTrip} /></div>
             <VehicleStatusStrip vehicle={vehicle} connection={connection} network={network} />
           </div>
           <DashboardSidebar weather={{ ...weather, temperatureC: temperature }} vehicle={vehicle} temperatureUnit={temperatureUnit} timeFormat={timeFormat} />
