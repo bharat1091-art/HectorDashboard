@@ -4,7 +4,6 @@ import {
   BatteryMedium,
   BluetoothConnected,
   CalendarDays,
-  Flag,
   ChevronLeft,
   ChevronRight,
   Clock3,
@@ -25,6 +24,9 @@ import { WeatherModeHint } from "./WeatherEnvironment";
 
 const VEHICLE_IMAGE = "https://api.builder.io/api/v1/image/assets/TEMP/9ce656fec5f9cdc32f1630019ab16c7d96149bfb?width=564";
 const TPMS_VEHICLE_IMAGE = "https://api.builder.io/api/v1/image/assets/TEMP/275f4f1db4f184507a2b5e69ea8b6f5d019a6e70?width=2048";
+const ROUTE_SUV_IMAGE = "https://cdn.builder.io/api/v1/image/assets%2F582e3ebccd4842d282419e49311a35af%2F0cab099464a74987a1bf93e11dc55e90?format=webp&width=800&height=1200";
+const ROUTE_START_FLAG_IMAGE = "https://cdn.builder.io/api/v1/image/assets%2F582e3ebccd4842d282419e49311a35af%2F215989aed87a421fa6a4c89a53bad44c?format=webp&width=800&height=1200";
+const ROUTE_END_FLAG_IMAGE = "https://cdn.builder.io/api/v1/image/assets%2F582e3ebccd4842d282419e49311a35af%2Fda051640402c4f9bad76bb7dc330c767?format=webp&width=800&height=1200";
 
 function GlassCard({ children, className = "" }: { children: React.ReactNode; className?: string }) {
   return <div className={`glass-card dashboard-card ${className}`}>{children}</div>;
@@ -49,7 +51,7 @@ export function DistanceSection({ trip, vehicle, unit }: { trip: TripRecord; veh
 
 export function RouteTracker({ progress }: { progress: number }) {
   const boundedProgress = Math.max(0, Math.min(100, progress));
-  return <section className="route-tracker"><div className="route-visual"><div className="route-grid" /><div className="route-track"><div className="route-track-remaining" /><div className="route-track-completed" style={{ width: `${boundedProgress}%` }} /><div className="route-segments">{Array.from({ length: 12 }, (_, index) => <span key={index} />)}</div></div><div className="route-flag route-start"><Flag size={31} /><span /></div><div className="route-flag route-end"><Flag size={31} /><span /></div><div className="route-vehicle-motion" style={{ left: `${8 + boundedProgress * 0.84}%` }}><span className="vehicle-platform" /><img src={VEHICLE_IMAGE} alt="Vehicle" /></div></div></section>;
+  return <section className="route-tracker"><div className="route-visual"><svg className="route-energy-svg" viewBox="0 0 1000 190" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="route-energy-gradient" x1="0" x2="1"><stop offset="0" stopColor="#00BFFF" /><stop offset="1" stopColor="#00FFFF" /></linearGradient><filter id="route-energy-glow" x="-30%" y="-300%" width="160%" height="700%"><feGaussianBlur stdDeviation="7" result="blur" /><feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge></filter></defs><path className="route-energy-base" d="M70 112 H930" /><path className="route-energy-completed" d="M70 112 H930" pathLength="100" style={{ strokeDasharray: `${boundedProgress} ${100 - boundedProgress}` }} /><path className="route-energy-flow route-energy-flow-one" d="M930 112 H70" /><path className="route-energy-flow route-energy-flow-two" d="M930 112 H70" /><path className="route-energy-pulse" d="M70 112 H930" /><path className="route-energy-platform" d="M370 147 H630 Q650 147 650 159 Q650 171 630 171 H370 Q350 171 350 159 Q350 147 370 147 Z" /><path className="route-energy-arrow route-energy-arrow-one" d="M280 103 l18 9 -18 9" /><path className="route-energy-arrow route-energy-arrow-two" d="M520 103 l18 9 -18 9" /><path className="route-energy-arrow route-energy-arrow-three" d="M760 103 l18 9 -18 9" /></svg><div className="route-flag route-start"><img src={ROUTE_START_FLAG_IMAGE} alt="Start" /></div><div className="route-flag route-end"><img src={ROUTE_END_FLAG_IMAGE} alt="Destination" /></div><div className="route-vehicle-motion" style={{ left: `${8 + boundedProgress * 0.84}%` }}><img src={ROUTE_SUV_IMAGE} alt="Vehicle" /></div></div></section>;
 }
 
 export function TripTimeSection({ duration }: { duration: string }) {
