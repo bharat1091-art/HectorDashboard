@@ -84,7 +84,7 @@
 .route-flag img { display: block; width: 58px; height: 58px; object-fit: contain; filter: drop-shadow(0 0 7px rgba(0,191,255,.75)); }
 .route-start { left: 6.8%; }.route-end { left: 93.2%; }.route-end img { filter: drop-shadow(0 0 7px rgba(255,255,255,.55)); }
 .route-vehicle-motion { position: absolute; top: 38px; width: 126px; height: 84px; transform: translateX(-50%); transition: left 1.2s cubic-bezier(.22,.61,.36,1); z-index: 3; pointer-events: none; }
-.route-vehicle-motion img { position: absolute; left: 0; top: 0; width: 126px; height: 84px; object-fit: contain; filter: drop-shadow(0 0 7px rgba(0,175,255,.9)); }
+.route-vehicle-motion img { position: absolute; left: 0; top: 0; width: 126px; height: 84px; object-fit: contain; background: transparent; mix-blend-mode: screen; filter: drop-shadow(0 0 7px rgba(0,175,255,.9)); }
 .dashboard-page, .dashboard-page .weather-environment, .dashboard-page .environment-glow { text-shadow: 1px 1px 3px rgba(0, 0, 0, 1); }
 @keyframes route-energy-flow { from { stroke-dashoffset: 0; } to { stroke-dashoffset: -84; } }
 @keyframes route-energy-pulse { 0%, 100% { opacity: .2; stroke-dashoffset: 0; } 50% { opacity: 1; stroke-dashoffset: -520; } }

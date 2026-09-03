@@ -24,7 +24,7 @@ import { WeatherModeHint } from "./WeatherEnvironment";
 
 const VEHICLE_IMAGE = "https://api.builder.io/api/v1/image/assets/TEMP/9ce656fec5f9cdc32f1630019ab16c7d96149bfb?width=564";
 const TPMS_VEHICLE_IMAGE = "https://api.builder.io/api/v1/image/assets/TEMP/275f4f1db4f184507a2b5e69ea8b6f5d019a6e70?width=2048";
-const ROUTE_SUV_IMAGE = "https://cdn.builder.io/api/v1/image/assets%2F582e3ebccd4842d282419e49311a35af%2F0cab099464a74987a1bf93e11dc55e90?format=webp&width=800&height=1200";
+const ROUTE_SUV_IMAGE = "https://cdn.builder.io/api/v1/image/assets%2F582e3ebccd4842d282419e49311a35af%2Fc470458ce33e40e4a75a024aebcc1526?format=webp&width=800&height=1200";
 const ROUTE_START_FLAG_IMAGE = "https://cdn.builder.io/api/v1/image/assets%2F582e3ebccd4842d282419e49311a35af%2F215989aed87a421fa6a4c89a53bad44c?format=webp&width=800&height=1200";
 const ROUTE_END_FLAG_IMAGE = "https://cdn.builder.io/api/v1/image/assets%2F582e3ebccd4842d282419e49311a35af%2Fda051640402c4f9bad76bb7dc330c767?format=webp&width=800&height=1200";
 
