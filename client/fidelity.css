@@ -23,8 +23,8 @@
 .speed-value { margin-top: 91px; font-size: 120px; }
 .speed-unit { margin-left: 119px; margin-top: auto; font-size: 50px; }
 .speed-live { display: none; }
-.route-tracker { position: absolute; left: 0; top: 292px; width: 1062px; min-height: 194px; height: 194px; padding: 0; border: 0; overflow: hidden; }
-.route-visual { height: 194px; margin: 0; overflow: hidden; }
+.route-tracker { position: absolute; left: -73px; top: 292px; width: 1202px; min-height: 194px; height: 194px; padding: 0; border: 0; overflow: hidden; }
+.route-visual { width: 1202px; height: 194px; margin: 0; overflow: hidden; }
 .trip-time { position: absolute; left: 55px; top: 508px; width: 482px; max-width: none; min-height: 83px; height: 83px; margin: 0; gap: 13px; padding: 0; }
 .trip-time-label { font-size: 50px; }
 .trip-time strong { font-size: 65px; }
@@ -70,21 +70,24 @@
 .trip-time { justify-content: center; }
 .dashboard-sidebar { background: linear-gradient(145deg, rgba(4,16,37,.46), rgba(4,10,24,.34)); border-radius: 24px; box-shadow: inset 0 0 34px rgba(0,175,255,.05); }
 .route-visual { position: relative; }
-.route-energy-svg { position: absolute; inset: 0; width: 100%; height: 190px; overflow: visible; pointer-events: none; }
+.route-energy-svg { position: absolute; inset: 0; width: 1202px; height: 194px; overflow: visible; pointer-events: none; }
 .route-energy-svg path { fill: none; stroke-linecap: round; stroke-linejoin: round; }
 .route-energy-base { stroke: rgba(0,191,255,.2); stroke-width: 12; filter: url(#route-energy-glow); }
 .route-energy-completed { stroke: url(#route-energy-gradient); stroke-width: 7; filter: url(#route-energy-glow); transition: stroke-dasharray 1.2s cubic-bezier(.22,.61,.36,1); }
+.route-energy-segment { fill: rgba(8,191,255,.24); stroke: #00c0e8; stroke-width: 1; filter: url(#route-energy-glow); }
+.route-energy-shadow { fill: #000; opacity: .9; filter: blur(5px); }
 .route-energy-flow { stroke: #00ffff; stroke-width: 2.5; stroke-dasharray: 12 30; filter: url(#route-energy-glow); animation: route-energy-flow 2.2s linear infinite; }
 .route-energy-flow-two { stroke: #00bfff; stroke-dasharray: 5 42; animation-duration: 3.4s; animation-delay: -.8s; }
 .route-energy-pulse { stroke: #b4ffff; stroke-width: 1.5; stroke-dasharray: 80 780; filter: url(#route-energy-glow); animation: route-energy-pulse 2.8s ease-in-out infinite; }
-.route-energy-platform { fill: url(#route-energy-gradient); fill-opacity: .16; stroke: #00ffff; stroke-width: 2; filter: url(#route-energy-glow); }
+.route-energy-platform { fill: url(#route-energy-gradient); fill-opacity: .16; stroke: #00ffff; stroke-width: 2; filter: url(#route-energy-glow); mix-blend-mode: plus-lighter; }
+.route-energy-chevron { stroke: #00c0e8; stroke-width: 1; fill: rgba(8,191,255,.22); filter: url(#route-energy-glow); animation: route-arrow-pulse 1.8s ease-in-out infinite; }
 .route-energy-arrow { stroke: #b8ffff; stroke-width: 3; filter: url(#route-energy-glow); animation: route-arrow-pulse 1.8s ease-in-out infinite; }
 .route-energy-arrow-two { animation-delay: -.6s; }.route-energy-arrow-three { animation-delay: -1.2s; }
-.route-flag { position: absolute; top: 55px; display: flex; align-items: center; justify-content: center; transform: translateX(-50%); z-index: 2; width: 58px; height: 58px; }
-.route-flag img { display: block; width: 58px; height: 58px; object-fit: contain; filter: drop-shadow(0 0 7px rgba(0,191,255,.75)); }
-.route-start { left: 6.8%; }.route-end { left: 93.2%; }.route-end img { filter: drop-shadow(0 0 7px rgba(255,255,255,.55)); }
-.route-vehicle-motion { position: absolute; top: 38px; width: 126px; height: 84px; transform: translateX(-50%); transition: left 1.2s cubic-bezier(.22,.61,.36,1); z-index: 3; pointer-events: none; }
-.route-vehicle-motion img { position: absolute; left: 0; top: 0; width: 126px; height: 84px; object-fit: contain; background: transparent; mix-blend-mode: screen; filter: drop-shadow(0 0 7px rgba(0,175,255,.9)); }
+.route-flag { position: absolute; top: 8px; display: flex; align-items: center; justify-content: center; transform: translateX(-50%); z-index: 2; width: 266px; height: 177px; }
+.route-flag img { display: block; width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 0 7px rgba(0,191,255,.75)); }
+.route-start { left: -4.85%; }.route-end { left: 863px; top: 8px; }.route-end img { filter: drop-shadow(0 0 7px rgba(255,255,255,.55)); }
+.route-vehicle-motion { position: absolute; top: 0; width: 293px; height: 194px; transform: translateX(-50%) scaleX(-1); transition: left 1.2s cubic-bezier(.22,.61,.36,1); z-index: 3; pointer-events: none; }
+.route-vehicle-motion img { position: absolute; left: 0; top: 0; width: 293px; height: 194px; object-fit: contain; background: transparent; mix-blend-mode: screen; filter: drop-shadow(0 0 7px rgba(0,175,255,.9)); }
 .dashboard-page, .dashboard-page .weather-environment, .dashboard-page .environment-glow { text-shadow: 1px 1px 3px rgba(0, 0, 0, 1); }
 @keyframes route-energy-flow { from { stroke-dashoffset: 0; } to { stroke-dashoffset: -84; } }
 @keyframes route-energy-pulse { 0%, 100% { opacity: .2; stroke-dashoffset: 0; } 50% { opacity: 1; stroke-dashoffset: -520; } }
