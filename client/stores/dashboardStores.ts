@@ -36,7 +36,7 @@ const defaultVehicle: VehicleData = {
   cabinTemperatureC: 27,
   fuelPercent: 58,
   rangeKm: 420,
-  engineTemperatureC: 92,
+  engineTemperatureC: 86,
   tirePressurePsi: [32, 33, 32, 34],
   batteryVoltage: 13.6,
   ignitionOn: true,
