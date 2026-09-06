@@ -1,10 +1,12 @@
-import { useEffect } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { Activity, LocateFixed } from "lucide-react";
 import { useLocationStore, useNetworkStore, useSettingsStore, useTripStore, useVehicleStore, useWeatherStore, startVehicleTelemetry } from "@/stores/dashboardStores";
 import { WeatherEnvironment } from "@/components/dashboard/WeatherEnvironment";
 import { BottomNavigation, DashboardSidebar, DistanceSection, RouteTracker, TelemetryStrip, VehicleMetricsPanel, VehicleStatusStrip, VehicleTpmsPanel, WeatherAdvisory, WeatherHeader } from "@/components/dashboard/DashboardComponents";
 
 export default function Index() {
+  const viewportRef = useRef<HTMLDivElement>(null);
+  const [hmiScale, setHmiScale] = useState(1);
   const { weather, refreshWeather } = useWeatherStore();
   const { location, refreshLocation } = useLocationStore();
   const { vehicle, connection } = useVehicleStore();
@@ -28,11 +30,31 @@ export default function Index() {
 
   const temperature = temperatureUnit === "F" ? Math.round(weather.temperatureC * 1.8 + 32) : weather.temperatureC;
 
+  useLayoutEffect(() => {
+    const viewport = viewportRef.current;
+    if (!viewport) return;
+
+    const updateScale = () => {
+      const widthScale = viewport.clientWidth / 1506;
+      const heightScale = viewport.clientHeight / 941;
+      setHmiScale(Math.min(1, widthScale, heightScale));
+    };
+
+    updateScale();
+    const observer = new ResizeObserver(updateScale);
+    observer.observe(viewport);
+    window.addEventListener("orientationchange", updateScale);
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("orientationchange", updateScale);
+    };
+  }, []);
+
   return (
     <main className={`dashboard-page theme-${activeCondition} font-${fontStyle} font-scale-${fontScale}`}>
       <WeatherEnvironment condition={activeCondition} />
-      <div className="hmi-scale-viewport">
-        <div className="dashboard-shell">
+      <div ref={viewportRef} className="hmi-scale-viewport">
+        <div className="dashboard-shell" style={{ transform: `scale(${hmiScale})` }}>
           <div className="dashboard-panel">
             <WeatherHeader weather={weather} city={location.city} state={location.state} country={location.country} online={network.online} />
             <section className="dashboard-main">

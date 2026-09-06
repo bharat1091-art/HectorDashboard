@@ -1,4 +1,5 @@
 /* Figma fidelity layout */
+.dashboard-page { width: 100%; height: 100dvh; min-height: 100svh; overflow: hidden; }
 .dashboard-shell { position: relative; width: 1506px; height: 941px; margin: 0 auto; padding: 0; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start; overflow: visible; }
 .dashboard-panel { position: relative; width: 1062px; height: 941px; min-height: 0; border: 0; border-radius: 0; background: transparent; box-shadow: none; backdrop-filter: none; overflow: visible; grid-template-rows: 167px 632px 134px; align-content: start; } .dashboard-panel::before { content: ""; position: absolute; z-index: 0; left: 0; top: 0; width: 1062px; height: 941px; border: 1px solid rgba(0,175,255,.38); border-radius: 24px; background: linear-gradient(145deg, rgba(4,16,37,.82), rgba(4,10,24,.68)); box-shadow: inset 0 0 50px rgba(0,175,255,.07), 0 24px 90px rgba(0,0,0,.35), 0 0 35px rgba(0,175,255,.1); backdrop-filter: blur(20px); } .dashboard-panel > * { position: relative; z-index: 1; }
 .weather-header { position: relative; width: 1062px; height: 167px; min-height: 167px; margin-left: 0; padding: 0; display: block; border-bottom: 0; }
@@ -56,8 +57,8 @@
 .settings-page .weather-environment { z-index: -1; }
 .settings-shell { position: relative; z-index: 1; }
 
-.hmi-scale-viewport { width: 100vw; height: 100svh; display: grid; place-items: center; overflow: hidden; }
-.dashboard-shell { transform-origin: center center; transform: scale(min(1, calc(100vw / 1506), calc(100svh / 941))); }
+.hmi-scale-viewport { width: 100%; height: 100%; min-width: 0; min-height: 0; display: grid; place-items: center; overflow: hidden; box-sizing: border-box; }
+.dashboard-shell { flex: 0 0 auto; transform-origin: center center; }
 .weather-symbol { transform: none; }
 
 .distance-section > .speed-metric { display: grid; grid-template-columns: auto auto; grid-template-rows: auto auto; justify-content: center; align-items: baseline; column-gap: 6px; margin-left: 47px; }
