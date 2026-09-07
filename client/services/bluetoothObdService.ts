@@ -26,7 +26,7 @@ export function createMockTelemetryTicker(
       cabinTemperatureC: Math.round(cabinTemp),
       fuelPercent: 58,
       rangeKm: 420,
-      engineTemperatureC: Math.round(86 + (cabinTemp - 27) * 2),
+      engineTemperatureC: 86,
       tirePressurePsi: [32, 33, 32, 34],
       batteryVoltage: 13.6,
       ignitionOn: true,
