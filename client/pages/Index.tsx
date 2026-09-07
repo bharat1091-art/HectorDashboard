@@ -15,7 +15,7 @@ export default function Index() {
   const { network, refreshNetwork } = useNetworkStore();
   const trip = trips[selectedIndex];
   const activeCondition = themeMode === "static" ? staticTheme : weather.condition;
-  const routeProgress = Math.min(100, Math.max(0, trip.progressPercent + ((vehicle.distanceTraveledKm - 236.1) / Math.max(1, trip.totalDistanceKm)) * 100));
+  const routeProgress = Math.min(100, Math.max(0, trip.progressPercent + ((vehicle.distanceTraveledKm - 238.0) / Math.max(1, trip.totalDistanceKm)) * 100));
 
   useEffect(() => {
     refreshLocation();

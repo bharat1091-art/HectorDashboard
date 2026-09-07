@@ -32,7 +32,7 @@ const defaultWeather: WeatherData = {
 const defaultVehicle: VehicleData = {
   speedKph: 50,
   avgSpeedKph: 100,
-  distanceTraveledKm: 236.1,
+  distanceTraveledKm: 238.0,
   cabinTemperatureC: 27,
   fuelPercent: 58,
   rangeKm: 420,
