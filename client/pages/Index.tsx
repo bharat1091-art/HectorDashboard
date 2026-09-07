@@ -37,10 +37,16 @@ export default function Index() {
     const updateScale = () => {
       const widthScale = viewport.clientWidth / 1506;
       const heightScale = viewport.clientHeight / 941;
+      if (widthScale <= 0 || heightScale <= 0) return;
       setHmiScale(Math.min(1, widthScale, heightScale));
     };
 
     updateScale();
+    if (typeof ResizeObserver === "undefined") {
+      window.addEventListener("resize", updateScale);
+      return () => window.removeEventListener("resize", updateScale);
+    }
+
     const observer = new ResizeObserver(updateScale);
     observer.observe(viewport);
     window.addEventListener("orientationchange", updateScale);
