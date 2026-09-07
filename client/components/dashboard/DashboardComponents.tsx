@@ -28,17 +28,17 @@ const ROUTE_SUV_IMAGE = "https://cdn.builder.io/api/v1/image/assets%2F582e3ebccd
 const ROUTE_START_FLAG_IMAGE = "https://cdn.builder.io/api/v1/image/assets%2F582e3ebccd4842d282419e49311a35af%2F215989aed87a421fa6a4c89a53bad44c?format=webp&width=800&height=1200";
 const ROUTE_END_FLAG_IMAGE = "https://cdn.builder.io/api/v1/image/assets%2F582e3ebccd4842d282419e49311a35af%2Fda051640402c4f9bad76bb7dc330c767?format=webp&width=800&height=1200";
 const ROUTE_PLATFORM_IMAGE = "https://cdn.builder.io/api/v1/image/assets%2F582e3ebccd4842d282419e49311a35af%2Ff7cb561d798d4d689d2d1861f37e0dff?format=webp&width=800&height=1200";
-const ROUTE_CHEVRON_IMAGES = [
-  "https://cdn.builder.io/api/v1/image/assets%2F582e3ebccd4842d282419e49311a35af%2F17aeb6196f0849d59c03a372c8ef450b?format=webp&width=800&height=1200",
-  "https://cdn.builder.io/api/v1/image/assets%2F582e3ebccd4842d282419e49311a35af%2F044277524a834c69b6363f20c5e6aa64?format=webp&width=800&height=1200",
-  "https://cdn.builder.io/api/v1/image/assets%2F582e3ebccd4842d282419e49311a35af%2Fbf846c1809264a6f95e085619f157eee?format=webp&width=800&height=1200",
+const ROUTE_SEGMENT_PATHS = [
+  "M138 132 H270 L286 145 L270 158 H138 Z",
+  "M305 132 H430 L446 145 L430 158 H305 Z",
+  "M555 132 H680 L696 145 L680 158 H555 Z",
+  "M715 132 H840 L856 145 L840 158 H715 Z",
+  "M875 132 H1010 L1026 145 L1010 158 H875 Z",
 ];
-const ROUTE_LINE_IMAGES = [
-  "https://cdn.builder.io/api/v1/image/assets%2F582e3ebccd4842d282419e49311a35af%2F5f7d118b19e64b03825f5b5efc62f245?format=webp&width=800&height=1200",
-  "https://cdn.builder.io/api/v1/image/assets%2F582e3ebccd4842d282419e49311a35af%2F9e2ac3597bd744d3bf1df2067de98970?format=webp&width=800&height=1200",
-  "https://cdn.builder.io/api/v1/image/assets%2F582e3ebccd4842d282419e49311a35af%2Fdfa4e9ac85da4f94b6652a12cccd3575?format=webp&width=800&height=1200",
-  "https://cdn.builder.io/api/v1/image/assets%2F582e3ebccd4842d282419e49311a35af%2F8d106749d5bd4d899967abc435127944?format=webp&width=800&height=1200",
-  "https://cdn.builder.io/api/v1/image/assets%2F582e3ebccd4842d282419e49311a35af%2Fad359dc33f664836a0bafa2fabffa94e?format=webp&width=800&height=1200",
+const ROUTE_CHEVRON_PATHS = [
+  "M466 132 L484 145 L466 158 M484 132 L502 145 L484 158",
+  "M705 132 L723 145 L705 158 M723 132 L741 145 L723 158",
+  "M865 132 L883 145 L865 158 M883 132 L901 145 L883 158",
 ];
 
 function GlassCard({ children, className = "" }: { children: React.ReactNode; className?: string }) {
@@ -68,9 +68,28 @@ export function RouteTracker({ progress }: { progress: number }) {
   return (
     <section className="route-tracker">
       <div className="route-visual">
-        <div className="route-segment-assets" aria-hidden="true">{ROUTE_LINE_IMAGES.map((src, index) => <img key={src} className={`route-segment-image route-segment-image-${index + 1}`} src={src} alt="" />)}</div>
-        <div className="route-chevron-assets route-chevron-assets-behind" aria-hidden="true">{ROUTE_CHEVRON_IMAGES.map((src, index) => <img key={`behind-${src}`} className={`route-chevron-image route-chevron-image-${index + 1}`} src={src} alt="" />)}</div>
-        <div className="route-chevron-assets route-chevron-assets-ahead" aria-hidden="true">{ROUTE_CHEVRON_IMAGES.slice(1).map((src, index) => <img key={`ahead-${src}`} className={`route-chevron-image route-chevron-image-ahead-${index + 1}`} src={src} alt="" />)}</div>
+        <svg className="route-inline-svg" viewBox="0 0 1202 194" preserveAspectRatio="none" aria-hidden="true">
+          <defs>
+            <filter id="route-inline-glow" x="-20%" y="-300%" width="140%" height="700%">
+              <feGaussianBlur stdDeviation="5" result="blur" />
+              <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
+            </filter>
+            <clipPath id="route-completed-clip"><rect x="0" y="0" width={138 + 888 * boundedProgress / 100} height="194" /></clipPath>
+          </defs>
+          <g className="route-segment-layer route-segment-layer-remaining" filter="url(#route-inline-glow)">
+            {ROUTE_SEGMENT_PATHS.map((path) => <path key={`remaining-${path}`} d={path} />)}
+          </g>
+          <g className="route-segment-layer route-segment-layer-completed" clipPath="url(#route-completed-clip)" filter="url(#route-inline-glow)">
+            {ROUTE_SEGMENT_PATHS.map((path) => <path key={`completed-${path}`} d={path} />)}
+          </g>
+          <g className="route-chevron-layer" filter="url(#route-inline-glow)">
+            {ROUTE_CHEVRON_PATHS.map((path, index) => {
+              const chevronProgress = [39, 66, 84][index];
+              const completed = boundedProgress >= chevronProgress;
+              return <path key={path} className={completed ? "route-chevron-path route-chevron-path-completed" : "route-chevron-path route-chevron-path-remaining"} d={path} style={{ animationDelay: `${index * -0.35}s` }} />;
+            })}
+          </g>
+        </svg>
         <div className="route-flag route-start"><img src={ROUTE_START_FLAG_IMAGE} alt="Start" /></div>
         <div className="route-flag route-end"><img src={ROUTE_END_FLAG_IMAGE} alt="Destination" /></div>
         <div className="vehicle-container" style={{ left: `${vehiclePosition}%` }}>
