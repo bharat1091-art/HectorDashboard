@@ -94,7 +94,7 @@ export function RouteTracker({ progress }: { progress: number }) {
         <div className="route-flag route-end"><img src={ROUTE_END_FLAG_IMAGE} alt="Destination" /></div>
         <div className="vehicle-container" style={{ left: `${vehiclePosition}%` }}>
           <img className="vehicle-svg" src={ROUTE_SUV_IMAGE} alt="Vehicle" />
-          <img className="platform-svg" src={ROUTE_PLATFORM_IMAGE} alt="" style={{ bottom: "26px", left: "120.494px" }} />
+          <img className="platform-svg" src={ROUTE_PLATFORM_IMAGE} alt="" style={{ bottom: "18px", left: "120.494px" }} />
         </div>
       </div>
     </section>
