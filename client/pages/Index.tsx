@@ -35,10 +35,20 @@ export default function Index() {
     if (!viewport) return;
 
     const updateScale = () => {
-      const widthScale = viewport.clientWidth / 1506;
-      const heightScale = viewport.clientHeight / 941;
-      if (widthScale <= 0 || heightScale <= 0) return;
-      setHmiScale(Math.min(1, widthScale, heightScale));
+      const vw = viewport.clientWidth;
+      const vh = viewport.clientHeight;
+      if (vw <= 0 || vh <= 0) return;
+
+      const isLandscape = vw > vh;
+      const isMobile = vw < 1024;
+
+      if (isLandscape && isMobile) {
+        const scale = Math.min(vw / 1506, vh / 941);
+        setHmiScale(scale);
+      } else {
+        const scale = Math.min(1, vw / 1506, vh / 941);
+        setHmiScale(scale);
+      }
     };
 
     updateScale();
