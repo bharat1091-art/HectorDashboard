@@ -36,9 +36,9 @@ const ROUTE_SEGMENT_PATHS = [
   "M875 132 H1010 L1026 145 L1010 158 H875 Z",
 ];
 const ROUTE_CHEVRON_PATHS = [
-  "M466 132 L484 145 L466 158 M484 132 L502 145 L484 158",
-  "M705 132 L723 145 L705 158 M723 132 L741 145 L723 158",
-  "M865 132 L883 145 L865 158 M883 132 L901 145 L883 158",
+  "M458 137 H470 L480 145 L470 153 H458 M486 137 H498 L508 145 L498 153 H486 M480 145 H486",
+  "M697 137 H709 L719 145 L709 153 H697 M725 137 H737 L747 145 L737 153 H725 M719 145 H725",
+  "M857 137 H869 L879 145 L869 153 H857 M885 137 H897 L907 145 L897 153 H885 M879 145 H885",
 ];
 
 function GlassCard({ children, className = "" }: { children: React.ReactNode; className?: string }) {
@@ -93,8 +93,8 @@ export function RouteTracker({ progress }: { progress: number }) {
         <div className="route-flag route-start"><img src={ROUTE_START_FLAG_IMAGE} alt="Start" /></div>
         <div className="route-flag route-end"><img src={ROUTE_END_FLAG_IMAGE} alt="Destination" /></div>
         <div className="vehicle-container" style={{ left: `${vehiclePosition}%` }}>
-          <img className="glow-platform-asset" src={ROUTE_PLATFORM_IMAGE} alt="" />
           <img className="vehicle-svg" src={ROUTE_SUV_IMAGE} alt="Vehicle" />
+          <img className="platform-svg" src={ROUTE_PLATFORM_IMAGE} alt="" />
         </div>
       </div>
     </section>
