@@ -52,3 +52,58 @@ button { cursor: pointer; }
 
 @media (max-width: 900px) { .dashboard-panel { min-height: calc(100svh - 28px); }.dashboard-content { grid-template-columns: 1fr; }.dashboard-sidebar { grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(2, minmax(175px, 1fr)); }.distance-value { font-size: clamp(110px, 18vw, 180px); }.dashboard-main { min-height: 430px; }.time-value { font-size: clamp(75px, 13vw, 110px); }.settings-grid { grid-template-columns: 1fr; } }
 @media (max-width: 600px) { .dashboard-shell { padding: 0; }.dashboard-panel { border-radius: 0; border-left: 0; border-right: 0; min-height: 100svh; }.weather-header { min-height: 170px; grid-template-columns: 1fr; padding: 34px 20px 18px; gap: 17px; }.weather-header::after { left: 24%; right: 24%; }.brand-mark { left: 20px; top: 12px; }.weather-summary, .location-summary { justify-self: start; }.weather-summary { gap: 12px; }.weather-symbol { transform: scale(.75); transform-origin: left center; width: 58px; }.weather-condition, .city-name { font-size: 34px; }.location-summary { margin-left: 73px; }.location-icon { width: 25px; }.region-name { font-size: 12px; margin-top: 5px; }.header-network { right: 20px; bottom: 18px; }.dashboard-content { padding: 23px 18px 12px; gap: 22px; }.dashboard-main { min-height: auto; gap: 20px; }.distance-section { min-height: 157px; gap: 11px; grid-template-columns: 1fr 1px .48fr; }.metric-overline { font-size: 9px; letter-spacing: 2px; }.distance-value { font-size: clamp(102px, 30vw, 155px); letter-spacing: -3px; }.distance-unit { font-size: 34px; right: 0; bottom: -2px; }.metric-separator { height: 102px; }.metric-label { font-size: 24px; }.speed-value { font-size: clamp(68px, 19vw, 100px); }.speed-unit { font-size: 23px; }.speed-live { font-size: 8px; margin-top: 7px; }.route-tracker { min-height: 148px; }.route-visual { height: 94px; }.trip-time { gap: 8px; }.trip-time svg { width: 24px; }.trip-time-label { font-size: 16px; letter-spacing: 2px; }.trip-time strong { font-size: 48px; }.trip-time-unit { font-size: 24px; }.telemetry-strip { gap: 8px 14px; font-size: 8px; }.dashboard-sidebar { gap: 10px; grid-template-rows: 150px 192px 150px 150px; }.temp-value { font-size: 70px; }.thermometer-art { transform: scale(.75); }.date-value { font-size: 31px; }.cabin-info { padding: 24px 17px; }.bottom-navigation { min-height: 87px; margin: 0 18px; grid-template-columns: 40px 1fr 40px 1px minmax(85px, .7fr); gap: 4px; }.trip-arrow svg { width: 33px; }.trip-selector { gap: 6px; font-size: 30px; }.trip-kicker { display: none; }.trip-dots { gap: 3px; margin-bottom: 5px; }.settings-link { gap: 4px; flex-direction: column; font-size: 11px; }.settings-link svg { width: 28px; height: 28px; }.navigation-divider { height: 58px; }.dashboard-status { display: none; }.mobile-weather-chip { display: flex; align-items: center; gap: 5px; position: fixed; right: 16px; top: 12px; color: rgba(169,222,247,.62); font-size: 9px; letter-spacing: 1px; }.settings-page { padding: 18px; }.settings-header { grid-template-columns: 1fr auto; gap: 14px; }.settings-header > div:nth-child(2) { grid-column: 1 / -1; grid-row: 1; }.settings-header > .back-link { grid-row: 2; }.settings-header-icon { grid-row: 2; }.settings-grid { margin-top: 20px; gap: 12px; }.settings-card { padding: 16px; }.setting-row { grid-template-columns: 25px 1fr; }.setting-control { grid-column: 2; justify-self: start; margin-top: 4px; }.settings-footer { align-items: flex-start; gap: 14px; flex-direction: column; }.settings-header h1 { font-size: 56px; } }
+
+/* ========== LANDSCAPE MOBILE / TABLET ========== */
+@media (max-height: 600px) and (orientation: landscape) {
+  .dashboard-shell { padding: 8px; }
+  .dashboard-panel {
+    min-height: calc(100svh - 16px);
+    border-radius: 16px;
+    grid-template-rows: auto 1fr auto;
+  }
+  .weather-header {
+    min-height: 80px;
+    padding: 12px 20px 8px;
+    grid-template-columns: 1fr 1fr;
+  }
+  .weather-header::after { left: 20%; right: 20%; }
+  .weather-condition, .city-name { font-size: 24px; }
+  .location-summary { justify-self: end; }
+  .dashboard-content {
+    padding: 12px 16px 8px;
+    gap: 12px;
+    grid-template-columns: 1fr 240px;
+  }
+  .dashboard-main { gap: 10px; }
+  .distance-section {
+    min-height: 100px;
+    gap: 16px;
+    grid-template-columns: 1fr 1px 140px;
+  }
+  .distance-value { font-size: clamp(60px, 12vw, 100px); letter-spacing: -2px; }
+  .distance-unit { font-size: 24px; }
+  .speed-value { font-size: clamp(40px, 8vw, 70px); }
+  .speed-unit { font-size: 20px; }
+  .route-tracker { min-height: 100px; padding: 10px 0 8px; }
+  .route-visual { height: 60px; }
+  .dashboard-sidebar {
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    gap: 8px;
+  }
+  .temp-value { font-size: 40px; }
+  .time-value { font-size: clamp(40px, 6vw, 60px); }
+  .bottom-navigation {
+    min-height: 60px;
+    margin: 0 16px;
+    grid-template-columns: 50px 1fr 50px 1px 100px;
+  }
+  .trip-selector { font-size: 22px; }
+  .settings-link { font-size: 14px; }
+}
+
+/* ========== TABLET LANDSCAPE (medium) ========== */
+@media (min-width: 1024px) and (max-width: 1366px) and (orientation: landscape) {
+  .dashboard-panel { width: min(1366px, 100%); }
+  .dashboard-content { grid-template-columns: 1fr 280px; }
+  .distance-value { font-size: clamp(100px, 14vw, 180px); }
+}
